@@ -136,7 +136,7 @@ export default function HomePage() {
             {issueNumber}
           </span>
           <span className="dateline" style={{ textAlign: "right" }}>
-            Est. MMXXVI
+            Est. MMXVI
           </span>
         </div>
       </div>
