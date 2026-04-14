@@ -15,10 +15,8 @@ export default function AboutPage() {
 
   return (
     <main className="page-enter min-h-screen">
-
       <div className="accent-bar" />
 
-      {/* Top Bar */}
       <div
         className="rule-thin"
         style={{
@@ -46,7 +44,6 @@ export default function AboutPage() {
         <DarkModeToggle />
       </div>
 
-      {/* Header */}
       <div
         style={{
           padding: "48px 24px 36px",
@@ -70,7 +67,6 @@ export default function AboutPage() {
         </h1>
       </div>
 
-      {/* Main Content */}
       <div
         style={{
           display: "grid",
@@ -78,15 +74,12 @@ export default function AboutPage() {
           borderBottom: "0.5px solid var(--border)",
         }}
       >
-
-        {/* Left — Bio */}
         <div
           style={{
             padding: "48px 40px 48px 24px",
             borderRight: "0.5px solid var(--border)",
           }}
         >
-          {/* Photo placeholder */}
           <div
             style={{
               width: "100%",
@@ -131,12 +124,10 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Bio text */}
           <div style={{ maxWidth: "600px" }}>
             <div className="label-accent" style={{ marginBottom: "20px" }}>
               The Writer
             </div>
-
             <div className="article-body">
               <p>
                 I am Nathan — founder of{" "}
@@ -165,8 +156,8 @@ export default function AboutPage() {
               </p>
               <p>
                 ALIMPATAKAN is a Cebuano word for a fleeting thought — the
-                kind that crosses your mind and disappears before you can
-                catch it. This publication is my attempt to catch them. Essays,
+                kind that crosses your mind and disappears before you can catch
+                it. This publication is my attempt to catch them. Essays,
                 poetry, short stories, reflections, and creative nonfiction.
                 Personal work, made for no brief and no client.
               </p>
@@ -178,15 +169,12 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Right — Publication Info */}
         <div style={{ padding: "48px 24px" }}>
-
-          {/* Publication details */}
           <div className="label-accent" style={{ marginBottom: "20px" }}>
             The Publication
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "0" }}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
             {[
               { label: "Publication", value: "ALIMPATAKAN" },
               { label: "Founded", value: "2026" },
@@ -194,7 +182,10 @@ export default function AboutPage() {
               { label: "Origin", value: "Visayas" },
               { label: "Current Issue", value: issueNumber },
               { label: "Total Pieces", value: String(allPieces.length) },
-              { label: "Categories", value: "Essay, Poetry, Short Story, Reflection, Nonfiction" },
+              {
+                label: "Categories",
+                value: "Essay, Poetry, Short Story, Reflection, Nonfiction",
+              },
               { label: "Frequency", value: "Whenever the words come" },
             ].map((item) => (
               <div
@@ -233,7 +224,6 @@ export default function AboutPage() {
             ))}
           </div>
 
-          {/* Links */}
           <div style={{ marginTop: "32px" }}>
             <div className="label-accent" style={{ marginBottom: "16px" }}>
               Elsewhere
@@ -248,17 +238,13 @@ export default function AboutPage() {
                 <span>NTHNL Studios</span>
                 <span style={{ color: "var(--text-faint)" }}>↗</span>
               </Link>
-              <Link
-                href="/archive"
-                className="about-external-link"
-              >
+              <Link href="/archive" className="about-external-link">
                 <span>Full Archive</span>
                 <span style={{ color: "var(--text-faint)" }}>→</span>
               </Link>
             </div>
           </div>
 
-          {/* What this is not */}
           <div
             style={{
               marginTop: "36px",
@@ -296,7 +282,6 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Footer */}
       <div
         style={{
           padding: "14px 24px",

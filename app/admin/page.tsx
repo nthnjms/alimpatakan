@@ -12,7 +12,7 @@ const CATEGORIES: Category[] = [
   "Nonfiction",
 ];
 
-const ADMIN_PASSWORD = "alimpatakan2026";
+const ADMIN_PASSWORD = "dayandayan";
 
 function slugify(text: string): string {
   return text
