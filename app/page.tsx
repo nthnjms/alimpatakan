@@ -12,7 +12,7 @@ import DarkModeToggle from "@/components/DarkModeToggle";
 export const metadata: Metadata = {
   title: "ALIMPATAKAN",
   description:
-    "A personal literary publication by Nathan. Essays, poetry, short stories, and reflections from a Visayan creative director in Manila.",
+    "A personal literary publication by Nathaniel James Toñacao. Essays, poetry, short stories, and reflections from a curious shy kid in Merida, Leyte.",
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -60,7 +60,7 @@ export default function HomePage() {
           background: "var(--surface)",
         }}
       >
-        <span className="dateline">Manila, Philippines</span>
+        <span className="dateline">Leyte, Philippines</span>
         <nav style={{ display: "flex", gap: "20px" }}>
           {["Essay", "Poetry", "Short Story", "Reflection", "Nonfiction"].map(
             (cat) => (
@@ -120,7 +120,7 @@ export default function HomePage() {
           }}
         >
           <span className="dateline" style={{ textAlign: "left" }}>
-            By Nathan · NTHNL Studios
+            By Nathaniel James Toñacao
           </span>
           <span
             style={{
