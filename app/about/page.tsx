@@ -117,7 +117,7 @@ export default function AboutPage() {
                   marginBottom: "16px",
                 }}
               >
-                I am Nathan — founder of{" "}
+                I am Nathaniel James Toñacao, founder of{" "}
                 <Link
                   href="https://nthnlstudios.vercel.app"
                   target="_blank"
@@ -146,8 +146,8 @@ export default function AboutPage() {
                 I grew up in the Visayas. That specificity matters to me. The
                 way I think, the words I reach for, the things I find worth
                 writing about — all of it was formed somewhere specific, by
-                specific light and specific water. I carry that with me to
-                Manila, where I now live and work.
+                specific light and specific water. I carry that with me whenever 
+                I go.
               </p>
             </div>
           </div>
@@ -190,8 +190,8 @@ export default function AboutPage() {
           <div style={{ display: "flex", flexDirection: "column" }}>
             {[
               { label: "Publication", value: "ALIMPATAKAN" },
-              { label: "Founded", value: "2026" },
-              { label: "Based in", value: "Manila, Philippines" },
+              { label: "Founded", value: "2016" },
+              { label: "Based in", value: "Leyte, Philippines" },
               { label: "Origin", value: "Visayas" },
               { label: "Current Issue", value: issueNumber },
               { label: "Total Pieces", value: String(allPieces.length) },
