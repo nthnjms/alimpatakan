@@ -368,3 +368,19 @@ a {
 .archive-row:hover {
   background-color: var(--surface-hover);
 }
+
+.about-external-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--border);
+  font-family: var(--font-ibm-plex-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  transition: color 0.2s;
+}
+.about-external-link:hover {
+  color: var(--accent);
+}
