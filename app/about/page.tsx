@@ -6,7 +6,7 @@ import DarkModeToggle from "@/components/DarkModeToggle";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About ALIMPATAKAN — a personal literary publication by Nathan, founder of NTHNL Studios.",
+    "About ALIMPATAKAN — a personal literary publication by Nathaniel James Toñacao, founder of NTHNL Studios.",
 };
 
 export default function AboutPage() {
@@ -151,8 +151,8 @@ export default function AboutPage() {
                 I grew up in the Visayas. That specificity matters to me. The
                 way I think, the words I reach for, the things I find worth
                 writing about — all of it was formed somewhere specific, by
-                specific light and specific water. I carry that with me to
-                Manila, where I now live and work.
+                specific light and specific water. I carry that with me
+                wherever I go.
               </p>
               <p>
                 ALIMPATAKAN is a Cebuano word for a fleeting thought — the
@@ -177,8 +177,8 @@ export default function AboutPage() {
           <div style={{ display: "flex", flexDirection: "column" }}>
             {[
               { label: "Publication", value: "ALIMPATAKAN" },
-              { label: "Founded", value: "2026" },
-              { label: "Based in", value: "Manila, Philippines" },
+              { label: "Founded", value: "2016" },
+              { label: "Based in", value: "Leyte, Philippines" },
               { label: "Origin", value: "Visayas" },
               { label: "Current Issue", value: issueNumber },
               { label: "Total Pieces", value: String(allPieces.length) },
