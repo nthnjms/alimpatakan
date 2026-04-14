@@ -1,297 +1,526 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { getAllPieces, getIssueNumber } from "@/lib/pieces";
+import {
+  getFeaturedPiece,
+  getRecentPieces,
+  getIssueNumber,
+  formatDate,
+  formatDateShort,
+} from "@/lib/pieces";
 import DarkModeToggle from "@/components/DarkModeToggle";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "ALIMPATAKAN",
   description:
-    "About ALIMPATAKAN — a personal literary publication by Nathan, founder of NTHNL Studios.",
+    "A personal literary publication by Nathan. Essays, poetry, short stories, and reflections from a Visayan creative director in Manila.",
 };
 
-export default function AboutPage() {
-  const allPieces = getAllPieces();
+const CATEGORY_COLORS: Record<string, string> = {
+  Essay: "#4A90D9",
+  Poetry: "#9B59B6",
+  "Short Story": "#27AE60",
+  Reflection: "#E67E22",
+  Nonfiction: "#E74C3C",
+};
+
+const CATEGORY_THUMBS: Record<string, string> = {
+  Essay: "📝",
+  Poetry: "🌿",
+  "Short Story": "📖",
+  Reflection: "🪞",
+  Nonfiction: "🗂️",
+};
+
+export default function HomePage() {
+  const featured = getFeaturedPiece();
+  const recent = getRecentPieces(5);
   const issueNumber = getIssueNumber();
+  const today = new Date().toLocaleDateString("en-PH", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "Asia/Manila",
+  });
 
   return (
     <main className="page-enter min-h-screen">
+
+      {/* Accent Bar */}
       <div className="accent-bar" />
 
+      {/* Top Bar */}
       <div
         className="rule-thin"
         style={{
-          padding: "6px 24px",
+          padding: "5px 24px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          background: "var(--surface)",
+        }}
+      >
+        <span className="dateline">Manila, Philippines</span>
+        <nav style={{ display: "flex", gap: "20px" }}>
+          {["Essay", "Poetry", "Short Story", "Reflection", "Nonfiction"].map(
+            (cat) => (
+              <Link
+                key={cat}
+                href={`/archive?category=${encodeURIComponent(cat)}`}
+                className="dateline top-cat-link"
+              >
+                {cat}
+              </Link>
+            )
+          )}
+        </nav>
+        <span className="dateline">{today}</span>
+      </div>
+
+      {/* Masthead */}
+      <div
+        style={{
+          padding: "20px 24px 0px",
+          textAlign: "center",
+          borderBottom: "3px solid var(--rule)",
+          position: "relative",
+        }}
+      >
+        <p
+          className="dateline"
+          style={{ marginBottom: "6px", color: "var(--text-muted)" }}
+        >
+          An independent literary publication
+        </p>
+
+        <h1
+          style={{
+            fontFamily: "var(--font-playfair)",
+            fontSize: "clamp(48px, 10vw, 108px)",
+            fontWeight: 900,
+            lineHeight: 0.88,
+            letterSpacing: "-3px",
+            color: "var(--text)",
+            margin: 0,
+          }}
+        >
+          ALIMPATAKAN
+        </h1>
+
+        {/* Subtitle row */}
+        <div
+          style={{
+            marginTop: "10px",
+            marginBottom: "0",
+            padding: "8px 0",
+            display: "grid",
+            gridTemplateColumns: "1fr auto 1fr",
+            alignItems: "center",
+            borderTop: "0.5px solid var(--border)",
+          }}
+        >
+          <span className="dateline" style={{ textAlign: "left" }}>
+            By Nathan · NTHNL Studios
+          </span>
+          <span
+            style={{
+              background: "var(--text)",
+              color: "var(--bg)",
+              fontFamily: "var(--font-ibm-plex-mono)",
+              fontSize: "9px",
+              letterSpacing: "0.15em",
+              padding: "3px 14px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {issueNumber}
+          </span>
+          <span className="dateline" style={{ textAlign: "right" }}>
+            Est. MMXXVI
+          </span>
+        </div>
+      </div>
+
+      {/* Nav */}
+      <div
+        className="rule-thin"
+        style={{
+          padding: "10px 24px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
         }}
       >
-        <Link href="/" className="dateline nav-link">
-          ← ALIMPATAKAN
-        </Link>
-        <span
-          style={{
-            background: "var(--text)",
-            color: "var(--bg)",
-            fontFamily: "var(--font-ibm-plex-mono)",
-            fontSize: "9px",
-            letterSpacing: "0.15em",
-            padding: "3px 10px",
-          }}
-        >
-          {issueNumber}
-        </span>
+        <nav style={{ display: "flex", gap: "24px" }}>
+          {[
+            { label: "Front Page", href: "/" },
+            { label: "Archive", href: "/archive" },
+            { label: "About", href: "/about" },
+          ].map((item) => (
+            <Link key={item.href} href={item.href} className="nav-link">
+              {item.label}
+            </Link>
+          ))}
+        </nav>
         <DarkModeToggle />
       </div>
 
-      <div
-        style={{
-          padding: "48px 24px 36px",
-          borderBottom: "3px solid var(--rule)",
-        }}
-      >
-        <p className="dateline" style={{ marginBottom: "10px" }}>
-          About This Publication
-        </p>
-        <h1
-          style={{
-            fontFamily: "var(--font-playfair)",
-            fontSize: "clamp(40px, 7vw, 88px)",
-            fontWeight: 900,
-            lineHeight: 0.9,
-            letterSpacing: "-2px",
-            color: "var(--text)",
-          }}
-        >
-          ALIMPATAKAN
-        </h1>
-      </div>
-
+      {/* Hero */}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 320px",
+          gridTemplateColumns: "1fr 280px",
           borderBottom: "0.5px solid var(--border)",
         }}
       >
+        {/* Hero Main */}
         <div
           style={{
-            padding: "48px 24px",
+            padding: "32px 32px 28px",
             borderRight: "0.5px solid var(--border)",
           }}
         >
-          <div className="label-accent" style={{ marginBottom: "20px" }}>
-            The Writer
-          </div>
-
+          {/* Hero Thumbnail */}
           <div
             style={{
+              width: "100%",
+              height: "220px",
+              background: "var(--surface)",
+              border: "0.5px solid var(--border)",
+              marginBottom: "20px",
               display: "flex",
-              gap: "28px",
-              alignItems: "flex-start",
-              marginBottom: "24px",
+              alignItems: "center",
+              justifyContent: "center",
+              position: "relative",
+              overflow: "hidden",
             }}
           >
-            <img
-              src="/photo.jpg"
-              alt="Nathan"
+            <div
               style={{
-                width: "200px",
-                minWidth: "200px",
-                height: "240px",
-                objectFit: "cover",
-                objectPosition: "top",
-                flexShrink: 0,
-                border: "0.5px solid var(--border)",
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexDirection: "column",
+                gap: "8px",
+              }}
+            >
+              <span style={{ fontSize: "48px", opacity: 0.15 }}>
+                {CATEGORY_THUMBS[featured.category] ?? "✍️"}
+              </span>
+              <span
+                style={{
+                  fontFamily: "var(--font-ibm-plex-mono)",
+                  fontSize: "8px",
+                  letterSpacing: "0.2em",
+                  color: "var(--text-faint)",
+                  textTransform: "uppercase",
+                }}
+              >
+                {featured.category}
+              </span>
+            </div>
+            {/* Category color bar */}
+            <div
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: "3px",
+                background:
+                  CATEGORY_COLORS[featured.category] ?? "var(--accent)",
               }}
             />
-
-            <div style={{ flex: 1 }}>
-              <p
-                style={{
-                  fontFamily: "var(--font-inter)",
-                  fontSize: "15px",
-                  lineHeight: 1.85,
-                  color: "var(--text)",
-                  textAlign: "justify",
-                  marginBottom: "16px",
-                }}
-              >
-                I am Nathaniel James Toñacao, founder of{" "}
-                <Link
-                  href="https://nthnlstudios.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{
-                    color: "var(--accent)",
-                    borderBottom: "1px solid var(--accent)",
-                    paddingBottom: "1px",
-                  }}
-                >
-                  NTHNL Studios
-                </Link>
-                , a creative and digital agency based in the Philippines. By
-                day I build brands, digital experiences, and campaigns for
-                clients. By night — and sometimes at 3am — I write.
-              </p>
-              <p
-                style={{
-                  fontFamily: "var(--font-inter)",
-                  fontSize: "15px",
-                  lineHeight: 1.85,
-                  color: "var(--text)",
-                  textAlign: "justify",
-                }}
-              >
-                I grew up in the Visayas. That specificity matters to me. The
-                way I think, the words I reach for, the things I find worth
-                writing about — all of it was formed somewhere specific, by
-                specific light and specific water. I carry that with me whenever 
-                I go.
-              </p>
-            </div>
           </div>
 
+          <div className="label-accent" style={{ marginBottom: "14px" }}>
+            {featured.category}
+          </div>
+
+          <Link href={`/${featured.slug}`} className="hero-headline-link">
+            <h2
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontSize: "clamp(28px, 4vw, 48px)",
+                fontWeight: 900,
+                lineHeight: 1.05,
+                letterSpacing: "-1px",
+                color: "var(--text)",
+                marginBottom: "16px",
+              }}
+            >
+              {featured.title}
+            </h2>
+          </Link>
+
           <p
             style={{
-              fontFamily: "var(--font-inter)",
-              fontSize: "15px",
-              lineHeight: 1.85,
-              color: "var(--text)",
-              textAlign: "justify",
-              marginBottom: "16px",
+              fontFamily: "var(--font-playfair)",
+              fontStyle: "italic",
+              fontSize: "16px",
+              lineHeight: 1.65,
+              color: "var(--text-muted)",
+              marginBottom: "20px",
+              maxWidth: "560px",
             }}
           >
-            ALIMPATAKAN is a Cebuano word for a fleeting thought — the kind
-            that crosses your mind and disappears before you can catch it. This
-            publication is my attempt to catch them. Essays, poetry, short
-            stories, reflections, and creative nonfiction. Personal work, made
-            for no brief and no client.
+            {featured.excerpt}
           </p>
-          <p
-            style={{
-              fontFamily: "var(--font-inter)",
-              fontSize: "15px",
-              lineHeight: 1.85,
-              color: "var(--text)",
-              textAlign: "justify",
-            }}
-          >
-            Everything here is written for the same reason: because it needed
-            to be said, and I was the one who needed to say it.
-          </p>
+
+          <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+            <span className="dateline">By Nathan</span>
+            <span className="dateline">·</span>
+            <span className="dateline">{formatDate(featured.date)}</span>
+            <span className="dateline">·</span>
+            <span className="dateline">{featured.readTime}</span>
+          </div>
+
+          <Link href={`/${featured.slug}`} className="read-link">
+            Read Piece →
+          </Link>
         </div>
 
-        <div style={{ padding: "48px 24px" }}>
-          <div className="label-accent" style={{ marginBottom: "20px" }}>
-            The Publication
-          </div>
+        {/* Hero Sidebar */}
+        <div style={{ padding: "32px 24px" }}>
+          <p
+            className="dateline"
+            style={{ marginBottom: "16px", color: "var(--text-muted)" }}
+          >
+            In This Issue
+          </p>
 
           <div style={{ display: "flex", flexDirection: "column" }}>
-            {[
-              { label: "Publication", value: "ALIMPATAKAN" },
-              { label: "Founded", value: "2016" },
-              { label: "Based in", value: "Leyte, Philippines" },
-              { label: "Origin", value: "Visayas" },
-              { label: "Current Issue", value: issueNumber },
-              { label: "Total Pieces", value: String(allPieces.length) },
-              { label: "Categories", value: "Essay, Poetry, Short Story, Reflection, Nonfiction" },
-              { label: "Frequency", value: "Whenever the words come" },
-            ].map((item) => (
-              <div
-                key={item.label}
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "100px 1fr",
-                  gap: "12px",
-                  padding: "12px 0",
-                  borderBottom: "0.5px solid var(--border)",
-                }}
+            {recent.slice(0, 4).map((piece, i) => (
+              <Link
+                key={piece.slug}
+                href={`/${piece.slug}`}
+                className="card-hover sidebar-card"
               >
-                <span
+                <div
                   style={{
-                    fontFamily: "var(--font-ibm-plex-mono)",
-                    fontSize: "8px",
-                    letterSpacing: "0.15em",
-                    textTransform: "uppercase",
-                    color: "var(--text-muted)",
-                    paddingTop: "2px",
+                    display: "flex",
+                    gap: "12px",
+                    alignItems: "flex-start",
                   }}
                 >
-                  {item.label}
-                </span>
-                <span
-                  style={{
-                    fontFamily: "var(--font-ibm-plex-mono)",
-                    fontSize: "10px",
-                    color: "var(--text)",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {item.value}
-                </span>
-              </div>
+                  {/* Mini thumbnail */}
+                  <div
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      background: "var(--surface)",
+                      border: "0.5px solid var(--border)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      flexShrink: 0,
+                      fontSize: "16px",
+                      position: "relative",
+                      overflow: "hidden",
+                    }}
+                  >
+                    <span style={{ opacity: 0.4 }}>
+                      {CATEGORY_THUMBS[piece.category] ?? "✍️"}
+                    </span>
+                    <div
+                      style={{
+                        position: "absolute",
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        height: "2px",
+                        background:
+                          CATEGORY_COLORS[piece.category] ?? "var(--accent)",
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-ibm-plex-mono)",
+                        fontSize: "8px",
+                        letterSpacing: "0.2em",
+                        color: "var(--accent)",
+                        textTransform: "uppercase",
+                        marginBottom: "4px",
+                      }}
+                    >
+                      {piece.category}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-playfair)",
+                        fontSize: "14px",
+                        fontWeight: 700,
+                        lineHeight: 1.2,
+                        color: "var(--text)",
+                        marginBottom: "4px",
+                      }}
+                    >
+                      {piece.title}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-ibm-plex-mono)",
+                        fontSize: "9px",
+                        color: "var(--text-muted)",
+                      }}
+                    >
+                      {formatDateShort(piece.date)} · {piece.readTime}
+                    </p>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
 
-          <div style={{ marginTop: "32px" }}>
-            <div className="label-accent" style={{ marginBottom: "16px" }}>
-              Elsewhere
-            </div>
-            <div style={{ display: "flex", flexDirection: "column" }}>
-              <Link
-                href="https://nthnlstudios.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="about-external-link"
-              >
-                <span>NTHNL Studios</span>
-                <span style={{ color: "var(--text-faint)" }}>↗</span>
-              </Link>
-              <Link href="/archive" className="about-external-link">
-                <span>Full Archive</span>
-                <span style={{ color: "var(--text-faint)" }}>→</span>
-              </Link>
-            </div>
-          </div>
-
-          <div
-            style={{
-              marginTop: "36px",
-              padding: "16px",
-              border: "0.5px solid var(--border)",
-              background: "var(--surface)",
-            }}
-          >
-            <p
-              style={{
-                fontFamily: "var(--font-ibm-plex-mono)",
-                fontSize: "8px",
-                letterSpacing: "0.15em",
-                textTransform: "uppercase",
-                color: "var(--text-muted)",
-                marginBottom: "10px",
-              }}
-            >
-              Editorial Note
-            </p>
-            <p
-              style={{
-                fontFamily: "var(--font-playfair)",
-                fontStyle: "italic",
-                fontSize: "13px",
-                lineHeight: 1.7,
-                color: "var(--text-muted)",
-              }}
-            >
-              This is not a blog. It is not a portfolio. It is not content. It
-              is a publication — personal, independent, and made entirely on
-              its own terms.
-            </p>
-          </div>
+          <Link href="/archive" className="archive-link">
+            View Full Archive →
+          </Link>
         </div>
       </div>
 
+      {/* Section Label */}
+      <div
+        style={{
+          padding: "10px 24px",
+          borderBottom: "0.5px solid var(--border)",
+          display: "flex",
+          alignItems: "center",
+          gap: "12px",
+        }}
+      >
+        <span className="dateline">Recent Pieces</span>
+        <div
+          style={{ flex: 1, height: "0.5px", background: "var(--border)" }}
+        />
+      </div>
+
+      {/* Article Grid — with thumbnails */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          borderBottom: "0.5px solid var(--border)",
+        }}
+      >
+        {recent.slice(0, 3).map((piece, i) => (
+          <Link
+            key={piece.slug}
+            href={`/${piece.slug}`}
+            className="card-hover article-card"
+            style={{
+              borderRight: i < 2 ? "0.5px solid var(--border)" : "none",
+            }}
+          >
+            {/* Card Thumbnail */}
+            <div
+              style={{
+                width: "100%",
+                height: "140px",
+                background: "var(--surface)",
+                border: "0.5px solid var(--border)",
+                marginBottom: "16px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                position: "relative",
+                overflow: "hidden",
+              }}
+            >
+              <span
+                style={{
+                  fontSize: "36px",
+                  opacity: 0.12,
+                }}
+              >
+                {CATEGORY_THUMBS[piece.category] ?? "✍️"}
+              </span>
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  height: "3px",
+                  background:
+                    CATEGORY_COLORS[piece.category] ?? "var(--accent)",
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  left: "10px",
+                  fontFamily: "var(--font-ibm-plex-mono)",
+                  fontSize: "7px",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: "var(--text-faint)",
+                  background: "var(--bg)",
+                  padding: "2px 6px",
+                  border: "0.5px solid var(--border)",
+                }}
+              >
+                {piece.category}
+              </div>
+            </div>
+
+            <div
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontSize: "28px",
+                fontWeight: 700,
+                color: "var(--border-strong)",
+                lineHeight: 1,
+                marginBottom: "10px",
+              }}
+            >
+              {String(i + 1).padStart(2, "0")}
+            </div>
+
+            <h3
+              style={{
+                fontFamily: "var(--font-playfair)",
+                fontSize: "18px",
+                fontWeight: 700,
+                lineHeight: 1.2,
+                color: "var(--text)",
+                marginBottom: "10px",
+              }}
+            >
+              {piece.title}
+            </h3>
+
+            <p
+              style={{
+                fontSize: "13px",
+                lineHeight: 1.6,
+                color: "var(--text-muted)",
+                marginBottom: "14px",
+              }}
+            >
+              {piece.excerpt}
+            </p>
+
+            <p
+              style={{
+                fontFamily: "var(--font-ibm-plex-mono)",
+                fontSize: "9px",
+                color: "var(--text-muted)",
+              }}
+            >
+              {formatDateShort(piece.date)} · {piece.readTime}
+            </p>
+          </Link>
+        ))}
+      </div>
+
+      {/* Footer */}
       <div
         style={{
           padding: "14px 24px",
@@ -300,9 +529,9 @@ export default function AboutPage() {
           alignItems: "center",
         }}
       >
-        <Link href="/" className="dateline footer-link">
-          ← Front Page
-        </Link>
+        <span className="dateline">
+          ALIMPATAKAN — A personal literary publication
+        </span>
         <Link
           href="https://nthnlstudios.vercel.app"
           target="_blank"
