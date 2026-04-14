@@ -6,7 +6,7 @@ import DarkModeToggle from "@/components/DarkModeToggle";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "About ALIMPATAKAN — a personal literary publication by Nathaniel James Toñacao, founder of NTHNL Studios.",
+    "About ALIMPATAKAN — a personal literary publication by Nathan, founder of NTHNL Studios.",
 };
 
 export default function AboutPage() {
@@ -76,60 +76,47 @@ export default function AboutPage() {
       >
         <div
           style={{
-            padding: "48px 40px 48px 24px",
+            padding: "48px 24px",
             borderRight: "0.5px solid var(--border)",
           }}
         >
-          <div
-            style={{
-              width: "100%",
-              maxWidth: "320px",
-              height: "240px",
-              background: "var(--surface)",
-              border: "0.5px solid var(--border)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "36px",
-            }}
-          >
-            <div style={{ textAlign: "center" }}>
-              <div
-                style={{
-                  fontFamily: "var(--font-ibm-plex-mono)",
-                  fontSize: "9px",
-                  letterSpacing: "0.2em",
-                  color: "var(--text-faint)",
-                  textTransform: "uppercase",
-                  marginBottom: "8px",
-                }}
-              >
-                Photo
-              </div>
-              <div
-                style={{
-                  width: "40px",
-                  height: "40px",
-                  border: "0.5px solid var(--border)",
-                  margin: "0 auto",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  color: "var(--text-faint)",
-                  fontSize: "20px",
-                }}
-              >
-                +
-              </div>
-            </div>
+          <div className="label-accent" style={{ marginBottom: "20px" }}>
+            The Writer
           </div>
 
-          <div style={{ maxWidth: "600px" }}>
-            <div className="label-accent" style={{ marginBottom: "20px" }}>
-              The Writer
-            </div>
-            <div className="article-body">
-              <p>
+          <div
+            style={{
+              display: "flex",
+              gap: "28px",
+              alignItems: "flex-start",
+              marginBottom: "24px",
+            }}
+          >
+            <img
+              src="/photo.jpg"
+              alt="Nathan"
+              style={{
+                width: "200px",
+                minWidth: "200px",
+                height: "240px",
+                objectFit: "cover",
+                objectPosition: "top",
+                flexShrink: 0,
+                border: "0.5px solid var(--border)",
+              }}
+            />
+
+            <div style={{ flex: 1 }}>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter)",
+                  fontSize: "15px",
+                  lineHeight: 1.85,
+                  color: "var(--text)",
+                  textAlign: "justify",
+                  marginBottom: "16px",
+                }}
+              >
                 I am Nathan — founder of{" "}
                 <Link
                   href="https://nthnlstudios.vercel.app"
@@ -147,26 +134,52 @@ export default function AboutPage() {
                 day I build brands, digital experiences, and campaigns for
                 clients. By night — and sometimes at 3am — I write.
               </p>
-              <p>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter)",
+                  fontSize: "15px",
+                  lineHeight: 1.85,
+                  color: "var(--text)",
+                  textAlign: "justify",
+                }}
+              >
                 I grew up in the Visayas. That specificity matters to me. The
                 way I think, the words I reach for, the things I find worth
                 writing about — all of it was formed somewhere specific, by
-                specific light and specific water. I carry that with me
-                wherever I go.
-              </p>
-              <p>
-                ALIMPATAKAN is a Cebuano word for a fleeting thought — the
-                kind that crosses your mind and disappears before you can catch
-                it. This publication is my attempt to catch them. Essays,
-                poetry, short stories, reflections, and creative nonfiction.
-                Personal work, made for no brief and no client.
-              </p>
-              <p>
-                Everything here is written for the same reason: because it
-                needed to be said, and I was the one who needed to say it.
+                specific light and specific water. I carry that with me to
+                Manila, where I now live and work.
               </p>
             </div>
           </div>
+
+          <p
+            style={{
+              fontFamily: "var(--font-inter)",
+              fontSize: "15px",
+              lineHeight: 1.85,
+              color: "var(--text)",
+              textAlign: "justify",
+              marginBottom: "16px",
+            }}
+          >
+            ALIMPATAKAN is a Cebuano word for a fleeting thought — the kind
+            that crosses your mind and disappears before you can catch it. This
+            publication is my attempt to catch them. Essays, poetry, short
+            stories, reflections, and creative nonfiction. Personal work, made
+            for no brief and no client.
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-inter)",
+              fontSize: "15px",
+              lineHeight: 1.85,
+              color: "var(--text)",
+              textAlign: "justify",
+            }}
+          >
+            Everything here is written for the same reason: because it needed
+            to be said, and I was the one who needed to say it.
+          </p>
         </div>
 
         <div style={{ padding: "48px 24px" }}>
@@ -177,15 +190,12 @@ export default function AboutPage() {
           <div style={{ display: "flex", flexDirection: "column" }}>
             {[
               { label: "Publication", value: "ALIMPATAKAN" },
-              { label: "Founded", value: "2016" },
-              { label: "Based in", value: "Leyte, Philippines" },
+              { label: "Founded", value: "2026" },
+              { label: "Based in", value: "Manila, Philippines" },
               { label: "Origin", value: "Visayas" },
               { label: "Current Issue", value: issueNumber },
               { label: "Total Pieces", value: String(allPieces.length) },
-              {
-                label: "Categories",
-                value: "Essay, Poetry, Short Story, Reflection, Nonfiction",
-              },
+              { label: "Categories", value: "Essay, Poetry, Short Story, Reflection, Nonfiction" },
               { label: "Frequency", value: "Whenever the words come" },
             ].map((item) => (
               <div
@@ -228,7 +238,7 @@ export default function AboutPage() {
             <div className="label-accent" style={{ marginBottom: "16px" }}>
               Elsewhere
             </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
               <Link
                 href="https://nthnlstudios.vercel.app"
                 target="_blank"
