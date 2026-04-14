@@ -12,7 +12,7 @@ import DarkModeToggle from "@/components/DarkModeToggle";
 export const metadata: Metadata = {
   title: "ALIMPATAKAN",
   description:
-    "A personal literary publication by Nathan. Essays, poetry, short stories, and reflections from a Visayan creative director in Manila.",
+    "A personal literary publication by Nathaniel. Essays, poetry, short stories, and reflections from a creative director in Leyte.",
 };
 
 export default function HomePage() {
@@ -35,7 +35,7 @@ export default function HomePage() {
 
       {/* Top Bar */}
       <div className="rule-thin" style={{ padding: "6px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span className="dateline">Manila, Philippines</span>
+        <span className="dateline">Leyte, Philippines</span>
         <nav style={{ display: "flex", gap: "20px" }}>
           {["Essay", "Poetry", "Short Story", "Reflection", "Nonfiction"].map((cat) => (
             <Link
@@ -67,7 +67,7 @@ export default function HomePage() {
           ALIMPATAKAN
         </h1>
         <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span className="dateline">By Nathan · NTHNL Studios</span>
+          <span className="dateline">by NJ Toñacao of NTHNL Studios</span>
           <span style={{
             background: "var(--text)",
             color: "var(--bg)",
@@ -78,7 +78,7 @@ export default function HomePage() {
           }}>
             {issueNumber}
           </span>
-          <span className="dateline">Est. MMXXVI</span>
+          <span className="dateline">Est. MMXVI</span>
         </div>
       </div>
 
