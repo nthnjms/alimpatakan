@@ -1,101 +1,285 @@
-import Image from "next/image";
+import Link from "next/link";
+import type { Metadata } from "next";
+import {
+  getFeaturedPiece,
+  getRecentPieces,
+  getIssueNumber,
+  formatDate,
+  formatDateShort,
+} from "@/lib/pieces";
+import DarkModeToggle from "@/components/DarkModeToggle";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "ALIMPATAKAN",
+  description:
+    "A personal literary publication by Nathan. Essays, poetry, short stories, and reflections from a Visayan creative director in Manila.",
+};
+
+export default function HomePage() {
+  const featured = getFeaturedPiece();
+  const recent = getRecentPieces(5);
+  const issueNumber = getIssueNumber();
+  const today = new Date().toLocaleDateString("en-PH", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "Asia/Manila",
+  });
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="page-enter min-h-screen">
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Accent Bar Top */}
+      <div className="accent-bar" />
+
+      {/* Top Bar */}
+      <div className="rule-thin" style={{ padding: "6px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <span className="dateline">Manila, Philippines</span>
+        <nav style={{ display: "flex", gap: "20px" }}>
+          {["Essay", "Poetry", "Short Story", "Reflection", "Nonfiction"].map((cat) => (
+            <Link
+              key={cat}
+              href={`/archive?category=${encodeURIComponent(cat)}`}
+              className="dateline top-cat-link"
+            >
+              {cat}
+            </Link>
+          ))}
+        </nav>
+        <span className="dateline" style={{ display: "none" }}>{today}</span>
+      </div>
+
+      {/* Masthead */}
+      <div style={{ padding: "20px 24px 16px", textAlign: "center", borderBottom: "3px solid var(--rule)" }}>
+        <p className="dateline" style={{ marginBottom: "8px" }}>
+          An independent literary publication
+        </p>
+        <h1 style={{
+          fontFamily: "var(--font-playfair)",
+          fontSize: "clamp(48px, 10vw, 108px)",
+          fontWeight: 900,
+          lineHeight: 0.88,
+          letterSpacing: "-3px",
+          color: "var(--text)",
+          margin: 0,
+        }}>
+          ALIMPATAKAN
+        </h1>
+        <div style={{ marginTop: "10px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <span className="dateline">By Nathan · NTHNL Studios</span>
+          <span style={{
+            background: "var(--text)",
+            color: "var(--bg)",
+            fontFamily: "var(--font-ibm-plex-mono)",
+            fontSize: "9px",
+            letterSpacing: "0.15em",
+            padding: "3px 10px",
+          }}>
+            {issueNumber}
+          </span>
+          <span className="dateline">Est. MMXXVI</span>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+      </div>
+
+      {/* Nav */}
+      <div className="rule-thin" style={{ padding: "10px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <nav style={{ display: "flex", gap: "24px" }}>
+          {[
+            { label: "Front Page", href: "/" },
+            { label: "Archive", href: "/archive" },
+            { label: "About", href: "/about" },
+          ].map((item) => (
+            <Link key={item.href} href={item.href} className="nav-link">
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <DarkModeToggle />
+      </div>
+
+      {/* Hero */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 280px", borderBottom: "0.5px solid var(--border)" }}>
+
+        {/* Hero Main */}
+        <div style={{ padding: "32px 32px 28px", borderRight: "0.5px solid var(--border)" }}>
+          <div className="label-accent" style={{ marginBottom: "14px" }}>
+            {featured.category}
+          </div>
+          <Link href={`/${featured.slug}`} className="hero-headline-link">
+            <h2 style={{
+              fontFamily: "var(--font-playfair)",
+              fontSize: "clamp(28px, 4vw, 48px)",
+              fontWeight: 900,
+              lineHeight: 1.05,
+              letterSpacing: "-1px",
+              color: "var(--text)",
+              marginBottom: "16px",
+            }}>
+              {featured.title}
+            </h2>
+          </Link>
+          <p style={{
+            fontFamily: "var(--font-playfair)",
+            fontStyle: "italic",
+            fontSize: "16px",
+            lineHeight: 1.65,
+            color: "var(--text-muted)",
+            marginBottom: "20px",
+            maxWidth: "560px",
+          }}>
+            {featured.excerpt}
+          </p>
+          <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+            <span className="dateline">By Nathan</span>
+            <span className="dateline">·</span>
+            <span className="dateline">{formatDate(featured.date)}</span>
+            <span className="dateline">·</span>
+            <span className="dateline">{featured.readTime}</span>
+          </div>
+          <Link href={`/${featured.slug}`} className="read-link">
+            Read Piece →
+          </Link>
+        </div>
+
+        {/* Hero Sidebar */}
+        <div style={{ padding: "32px 24px" }}>
+          <p className="dateline" style={{ marginBottom: "16px" }}>In This Issue</p>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            {recent.slice(0, 4).map((piece, i) => (
+              <Link
+                key={piece.slug}
+                href={`/${piece.slug}`}
+                className="card-hover sidebar-card"
+              >
+                <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
+                  <span style={{
+                    fontFamily: "var(--font-playfair)",
+                    fontSize: "22px",
+                    fontWeight: 700,
+                    color: "var(--border-strong)",
+                    lineHeight: 1,
+                    minWidth: "28px",
+                  }}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <div>
+                    <p style={{
+                      fontFamily: "var(--font-ibm-plex-mono)",
+                      fontSize: "8px",
+                      letterSpacing: "0.2em",
+                      color: "var(--accent)",
+                      textTransform: "uppercase",
+                      marginBottom: "4px",
+                    }}>
+                      {piece.category}
+                    </p>
+                    <p style={{
+                      fontFamily: "var(--font-playfair)",
+                      fontSize: "14px",
+                      fontWeight: 700,
+                      lineHeight: 1.2,
+                      color: "var(--text)",
+                      marginBottom: "4px",
+                    }}>
+                      {piece.title}
+                    </p>
+                    <p style={{
+                      fontFamily: "var(--font-ibm-plex-mono)",
+                      fontSize: "9px",
+                      color: "var(--text-muted)",
+                    }}>
+                      {formatDateShort(piece.date)} · {piece.readTime}
+                    </p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <Link href="/archive" className="archive-link">
+            View Full Archive →
+          </Link>
+        </div>
+      </div>
+
+      {/* Section Label */}
+      <div style={{ padding: "10px 24px", borderBottom: "0.5px solid var(--border)", display: "flex", alignItems: "center", gap: "12px" }}>
+        <span className="dateline">Recent Pieces</span>
+        <div style={{ flex: 1, height: "0.5px", background: "var(--border)" }} />
+      </div>
+
+      {/* Article Grid */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", borderBottom: "0.5px solid var(--border)" }}>
+        {recent.slice(0, 3).map((piece, i) => (
+          <Link
+            key={piece.slug}
+            href={`/${piece.slug}`}
+            className="card-hover article-card"
+            style={{ borderRight: i < 2 ? "0.5px solid var(--border)" : "none" }}
+          >
+            <div style={{
+              fontFamily: "var(--font-playfair)",
+              fontSize: "32px",
+              fontWeight: 700,
+              color: "var(--border-strong)",
+              lineHeight: 1,
+              marginBottom: "12px",
+            }}>
+              {String(i + 1).padStart(2, "0")}
+            </div>
+            <p style={{
+              fontFamily: "var(--font-ibm-plex-mono)",
+              fontSize: "8px",
+              letterSpacing: "0.2em",
+              color: "var(--accent)",
+              textTransform: "uppercase",
+              marginBottom: "8px",
+            }}>
+              {piece.category}
+            </p>
+            <h3 style={{
+              fontFamily: "var(--font-playfair)",
+              fontSize: "18px",
+              fontWeight: 700,
+              lineHeight: 1.2,
+              color: "var(--text)",
+              marginBottom: "10px",
+            }}>
+              {piece.title}
+            </h3>
+            <p style={{
+              fontSize: "13px",
+              lineHeight: 1.6,
+              color: "var(--text-muted)",
+              marginBottom: "14px",
+            }}>
+              {piece.excerpt}
+            </p>
+            <p style={{
+              fontFamily: "var(--font-ibm-plex-mono)",
+              fontSize: "9px",
+              color: "var(--text-muted)",
+            }}>
+              {formatDateShort(piece.date)} · {piece.readTime}
+            </p>
+          </Link>
+        ))}
+      </div>
+
+      {/* Footer */}
+      <div style={{ padding: "14px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <span className="dateline">ALIMPATAKAN — A personal literary publication</span>
+        <Link
+          href="https://nthnlstudios.vercel.app"
           target="_blank"
           rel="noopener noreferrer"
+          className="dateline footer-link"
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          NTHNL Studios ↗
+        </Link>
+      </div>
+
+      <div className="accent-bar" />
+    </main>
   );
 }
