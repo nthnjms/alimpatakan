@@ -86,7 +86,15 @@ export function getRelatedPieces(slug: string, limit = 3): Piece[] {
  */
 export function getActiveCategories(): Category[] {
   const cats = allPieces.map((p) => p.category);
-  return [...new Set(cats)] as Category[];
+  const seen: Record<string, boolean> = {};
+  const result: Category[] = [];
+  for (const cat of cats) {
+    if (!seen[cat]) {
+      seen[cat] = true;
+      result.push(cat);
+    }
+  }
+  return result;
 }
 
 /**
