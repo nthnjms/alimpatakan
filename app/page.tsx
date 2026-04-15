@@ -8,6 +8,7 @@ import {
   formatDateShort,
 } from "@/lib/pieces";
 import DarkModeToggle from "@/components/DarkModeToggle";
+import LiveClock from "@/components/LiveClock";
 
 export const metadata: Metadata = {
   title: "ALIMPATAKAN",
@@ -59,7 +60,11 @@ export default function HomePage() {
           background: "var(--surface)",
         }}
       >
-        <span className="dateline">Manila, PH</span>
+        <div className="left-info">
+        <span className="dateline">Leyte, PH </span> 
+        <span className="dateline" style={{ color: "var(--border-strong)" }}>·</span>
+        <LiveClock />
+        </div>
         <nav className="top-bar-nav" style={{ display: "flex", gap: "20px" }}>
           {["Essay", "Poetry", "Short Story", "Reflection", "Nonfiction"].map(
             (cat) => (
