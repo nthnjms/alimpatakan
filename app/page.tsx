@@ -13,7 +13,7 @@ import LiveClock from "@/components/LiveClock";
 export const metadata: Metadata = {
   title: "ALIMPATAKAN",
   description:
-    "A personal literary publication by Nathan. Essays, poetry, short stories, and reflections from a Visayan creative director in Manila.",
+    "A personal literary publication by NJ Toñacao. Essays, poetry, short stories, and reflections from a Visayan creative director in Manila.",
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -121,7 +121,7 @@ export default function HomePage() {
           }}
         >
           <span className="dateline" style={{ textAlign: "left" }}>
-            By Nathan · NTHNL Studios
+            By NJ Toñacao
           </span>
           <span
             style={{
@@ -137,7 +137,7 @@ export default function HomePage() {
             {issueNumber}
           </span>
           <span className="dateline" style={{ textAlign: "right" }}>
-            Est. MMXXVI
+            Est. MMXVI
           </span>
         </div>
       </div>
@@ -249,7 +249,7 @@ export default function HomePage() {
           </p>
 
           <div style={{ display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
-            <span className="dateline">By Nathan</span>
+            <span className="dateline">By NJ Toñacao</span>
             <span className="dateline">·</span>
             <span className="dateline">{formatDate(featured.date)}</span>
             <span className="dateline">·</span>
