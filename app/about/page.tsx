@@ -68,13 +68,16 @@ export default function AboutPage() {
       </div>
 
       <div
+        className="about-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 320px",
           borderBottom: "0.5px solid var(--border)",
         }}
       >
+      
         <div
+          className="about-left"
           style={{
             padding: "48px 24px",
             borderRight: "0.5px solid var(--border)",
@@ -85,6 +88,7 @@ export default function AboutPage() {
           </div>
 
           <div
+            className="about-photo-row"
             style={{
               display: "flex",
               gap: "28px",
@@ -182,7 +186,7 @@ export default function AboutPage() {
           </p>
         </div>
 
-        <div style={{ padding: "48px 24px" }}>
+        <div className="about-right" style={{ padding: "48px 24px" }}>
           <div className="label-accent" style={{ marginBottom: "20px" }}>
             The Publication
           </div>

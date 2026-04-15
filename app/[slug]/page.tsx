@@ -76,12 +76,11 @@ export default function PiecePage({
 
       {/* Article Header */}
       <div
+        className="piece-header"
         style={{
           padding: "48px 24px 36px",
           borderBottom: "3px solid var(--rule)",
           maxWidth: "860px",
-          margin: "0 auto",
-          width: "100%",
         }}
       >
         {/* Category */}
@@ -140,11 +139,10 @@ export default function PiecePage({
 
       {/* Article Body */}
       <div
+        className="piece-body"
         style={{
           padding: "48px 24px 64px",
           maxWidth: "860px",
-          margin: "0 auto",
-          width: "100%",
         }}
       >
         <div
@@ -203,10 +201,10 @@ export default function PiecePage({
               </div>
 
               <div
+                className="related-grid"
                 style={{
                   display: "grid",
                   gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-                  gap: "0",
                 }}
               >
                 {related.map((rel, i) => (
@@ -267,12 +265,12 @@ export default function PiecePage({
 
       {/* Footer */}
       <div
-        style={{
-          padding: "14px 24px",
+          className="piece-footer-nav"
+          style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          borderTop: "0.5px solid var(--border)",
+          marginBottom: "48px",
         }}
       >
         <span className="dateline">ALIMPATAKAN</span>

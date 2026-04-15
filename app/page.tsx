@@ -12,7 +12,7 @@ import DarkModeToggle from "@/components/DarkModeToggle";
 export const metadata: Metadata = {
   title: "ALIMPATAKAN",
   description:
-    "A personal literary publication by Nathaniel James Toñacao. Essays, poetry, short stories, and reflections from a curious shy kid in Merida, Leyte.",
+    "A personal literary publication by Nathan. Essays, poetry, short stories, and reflections from a Visayan creative director in Manila.",
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -46,12 +46,11 @@ export default function HomePage() {
   return (
     <main className="page-enter min-h-screen">
 
-      {/* Accent Bar */}
       <div className="accent-bar" />
 
       {/* Top Bar */}
       <div
-        className="rule-thin"
+        className="rule-thin top-bar"
         style={{
           padding: "5px 24px",
           display: "flex",
@@ -60,8 +59,8 @@ export default function HomePage() {
           background: "var(--surface)",
         }}
       >
-        <span className="dateline">Leyte, Philippines</span>
-        <nav style={{ display: "flex", gap: "20px" }}>
+        <span className="dateline">Manila, PH</span>
+        <nav className="top-bar-nav" style={{ display: "flex", gap: "20px" }}>
           {["Essay", "Poetry", "Short Story", "Reflection", "Nonfiction"].map(
             (cat) => (
               <Link
@@ -83,7 +82,6 @@ export default function HomePage() {
           padding: "20px 24px 0px",
           textAlign: "center",
           borderBottom: "3px solid var(--rule)",
-          position: "relative",
         }}
       >
         <p
@@ -92,11 +90,11 @@ export default function HomePage() {
         >
           An independent literary publication
         </p>
-
         <h1
+          className="masthead-title"
           style={{
             fontFamily: "var(--font-playfair)",
-            fontSize: "clamp(48px, 10vw, 108px)",
+            fontSize: "clamp(40px, 10vw, 108px)",
             fontWeight: 900,
             lineHeight: 0.88,
             letterSpacing: "-3px",
@@ -106,12 +104,10 @@ export default function HomePage() {
         >
           ALIMPATAKAN
         </h1>
-
-        {/* Subtitle row */}
         <div
+          className="masthead-sub-row"
           style={{
             marginTop: "10px",
-            marginBottom: "0",
             padding: "8px 0",
             display: "grid",
             gridTemplateColumns: "1fr auto 1fr",
@@ -120,7 +116,7 @@ export default function HomePage() {
           }}
         >
           <span className="dateline" style={{ textAlign: "left" }}>
-            By Nathaniel James Toñacao
+            By Nathan · NTHNL Studios
           </span>
           <span
             style={{
@@ -136,14 +132,14 @@ export default function HomePage() {
             {issueNumber}
           </span>
           <span className="dateline" style={{ textAlign: "right" }}>
-            Est. MMXVI
+            Est. MMXXVI
           </span>
         </div>
       </div>
 
       {/* Nav */}
       <div
-        className="rule-thin"
+        className="rule-thin main-nav"
         style={{
           padding: "10px 24px",
           display: "flex",
@@ -167,6 +163,7 @@ export default function HomePage() {
 
       {/* Hero */}
       <div
+        className="hero-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 280px",
@@ -175,6 +172,7 @@ export default function HomePage() {
       >
         {/* Hero Main */}
         <div
+          className="hero-main"
           style={{
             padding: "32px 32px 28px",
             borderRight: "0.5px solid var(--border)",
@@ -182,6 +180,7 @@ export default function HomePage() {
         >
           {/* Hero Thumbnail */}
           <div
+            className="hero-thumb"
             style={{
               width: "100%",
               height: "220px",
@@ -195,35 +194,9 @@ export default function HomePage() {
               overflow: "hidden",
             }}
           >
-            <div
-              style={{
-                position: "absolute",
-                inset: 0,
-                background:
-                  "linear-gradient(135deg, var(--surface) 0%, var(--bg) 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                flexDirection: "column",
-                gap: "8px",
-              }}
-            >
-              <span style={{ fontSize: "48px", opacity: 0.15 }}>
-                {CATEGORY_THUMBS[featured.category] ?? "✍️"}
-              </span>
-              <span
-                style={{
-                  fontFamily: "var(--font-ibm-plex-mono)",
-                  fontSize: "8px",
-                  letterSpacing: "0.2em",
-                  color: "var(--text-faint)",
-                  textTransform: "uppercase",
-                }}
-              >
-                {featured.category}
-              </span>
-            </div>
-            {/* Category color bar */}
+            <span style={{ fontSize: "48px", opacity: 0.12 }}>
+              {CATEGORY_THUMBS[featured.category] ?? "✍️"}
+            </span>
             <div
               style={{
                 position: "absolute",
@@ -231,8 +204,7 @@ export default function HomePage() {
                 left: 0,
                 right: 0,
                 height: "3px",
-                background:
-                  CATEGORY_COLORS[featured.category] ?? "var(--accent)",
+                background: CATEGORY_COLORS[featured.category] ?? "var(--accent)",
               }}
             />
           </div>
@@ -245,7 +217,7 @@ export default function HomePage() {
             <h2
               style={{
                 fontFamily: "var(--font-playfair)",
-                fontSize: "clamp(28px, 4vw, 48px)",
+                fontSize: "clamp(24px, 4vw, 48px)",
                 fontWeight: 900,
                 lineHeight: 1.05,
                 letterSpacing: "-1px",
@@ -271,7 +243,7 @@ export default function HomePage() {
             {featured.excerpt}
           </p>
 
-          <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+          <div style={{ display: "flex", gap: "12px", alignItems: "center", flexWrap: "wrap" }}>
             <span className="dateline">By Nathan</span>
             <span className="dateline">·</span>
             <span className="dateline">{formatDate(featured.date)}</span>
@@ -285,7 +257,10 @@ export default function HomePage() {
         </div>
 
         {/* Hero Sidebar */}
-        <div style={{ padding: "32px 24px" }}>
+        <div
+          className="hero-sidebar"
+          style={{ padding: "32px 24px" }}
+        >
           <p
             className="dateline"
             style={{ marginBottom: "16px", color: "var(--text-muted)" }}
@@ -300,15 +275,9 @@ export default function HomePage() {
                 href={`/${piece.slug}`}
                 className="card-hover sidebar-card"
               >
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "12px",
-                    alignItems: "flex-start",
-                  }}
-                >
-                  {/* Mini thumbnail */}
+                <div style={{ display: "flex", gap: "12px", alignItems: "flex-start" }}>
                   <div
+                    className="sidebar-thumb"
                     style={{
                       width: "40px",
                       height: "40px",
@@ -333,8 +302,7 @@ export default function HomePage() {
                         left: 0,
                         right: 0,
                         height: "2px",
-                        background:
-                          CATEGORY_COLORS[piece.category] ?? "var(--accent)",
+                        background: CATEGORY_COLORS[piece.category] ?? "var(--accent)",
                       }}
                     />
                   </div>
@@ -395,13 +363,12 @@ export default function HomePage() {
         }}
       >
         <span className="dateline">Recent Pieces</span>
-        <div
-          style={{ flex: 1, height: "0.5px", background: "var(--border)" }}
-        />
+        <div style={{ flex: 1, height: "0.5px", background: "var(--border)" }} />
       </div>
 
-      {/* Article Grid — with thumbnails */}
+      {/* Article Grid */}
       <div
+        className="article-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
@@ -417,7 +384,6 @@ export default function HomePage() {
               borderRight: i < 2 ? "0.5px solid var(--border)" : "none",
             }}
           >
-            {/* Card Thumbnail */}
             <div
               style={{
                 width: "100%",
@@ -432,12 +398,7 @@ export default function HomePage() {
                 overflow: "hidden",
               }}
             >
-              <span
-                style={{
-                  fontSize: "36px",
-                  opacity: 0.12,
-                }}
-              >
+              <span style={{ fontSize: "36px", opacity: 0.12 }}>
                 {CATEGORY_THUMBS[piece.category] ?? "✍️"}
               </span>
               <div
@@ -447,8 +408,7 @@ export default function HomePage() {
                   left: 0,
                   right: 0,
                   height: "3px",
-                  background:
-                    CATEGORY_COLORS[piece.category] ?? "var(--accent)",
+                  background: CATEGORY_COLORS[piece.category] ?? "var(--accent)",
                 }}
               />
               <div
@@ -527,11 +487,11 @@ export default function HomePage() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          flexWrap: "wrap",
+          gap: "8px",
         }}
       >
-        <span className="dateline">
-          ALIMPATAKAN — A personal literary publication
-        </span>
+        <span className="dateline">ALIMPATAKAN — A personal literary publication</span>
         <Link
           href="https://nthnlstudios.vercel.app"
           target="_blank"
