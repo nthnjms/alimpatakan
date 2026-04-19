@@ -9,6 +9,7 @@ import {
 } from "@/lib/pieces";
 import DarkModeToggle from "@/components/DarkModeToggle";
 import LiveClock from "@/components/LiveClock";
+import Logo from "@/components/Logo";
 
 export const metadata: Metadata = {
   title: "ALIMPATAKAN",
@@ -88,26 +89,8 @@ export default function HomePage() {
           borderBottom: "3px solid var(--rule)",
         }}
       >
-        <p
-          className="dateline"
-          style={{ marginBottom: "6px", color: "var(--text-muted)" }}
-        >
-          An independent literary publication
-        </p>
-        <h1
-          className="masthead-title"
-          style={{
-            fontFamily: "var(--font-playfair)",
-            fontSize: "clamp(40px, 10vw, 108px)",
-            fontWeight: 900,
-            lineHeight: 0.88,
-            letterSpacing: "-3px",
-            color: "var(--text)",
-            margin: 0,
-          }}
-        >
-          ALIMPATAKAN
-        </h1>
+       <Logo />
+       
         <div
           className="masthead-sub-row"
           style={{
