@@ -63,7 +63,9 @@ export default function HomePage() {
       >
         <div className="left-info">
         <span className="dateline">Leyte, PH </span> 
-        <LiveClock/>
+        <div className="hidden md:inline">
+          <LiveClock />
+        </div>
         </div>
         <nav className="top-bar-nav" style={{ display: "flex", gap: "20px" }}>
           {["Essay", "Poetry", "Short Story", "Reflection", "Nonfiction"].map(
