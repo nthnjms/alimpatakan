@@ -23,7 +23,7 @@ export default function PrivatePiecePage({
   if (!piece) notFound();
 
   const formattedContent = formatContent(piece.content, piece.category);
-  const isPoetry = piece.category === "Poetry";
+  const isPoetry = piece.category === "Stroke";
 
   return (
     <PrivateGate>

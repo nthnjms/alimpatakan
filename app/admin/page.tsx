@@ -5,12 +5,12 @@ import { useRouter } from "next/navigation";
 import type { Piece, Category } from "@/lib/pieces";
 
 const CATEGORIES: Category[] = [
-  "Essay",
-  "Poetry",
-  "Short Story",
-  "Fiction",
-  "Reflection",
-  "Nonfiction",
+  "Hardcore",
+  "Stroke",
+  "Quickie",
+  "Fantasy",
+  "Uncensored",
+  "Raw",
 ];
 
 const ADMIN_PASSWORD = "dayandayan";
@@ -100,7 +100,7 @@ const newPiece: Piece = {
       setTimeout(() => setSaved(false), 3000);
       setForm({
         title: "",
-        category: "Essay",
+        category: "Hardcore",
         date: new Date().toISOString().split("T")[0],
         excerpt: "",
         content: "",
@@ -502,7 +502,7 @@ const newPiece: Piece = {
               value={form.content}
               onChange={(e) => setForm({ ...form, content: e.target.value })}
               placeholder={
-                form.category === "Poetry"
+                form.category === "Stroke"
                   ? "Write each line on its own line.\nLeave a blank line between stanzas.\nUse *word* for italics."
                   : "Write your piece here.\n\nLeave a blank line between paragraphs.\nUse *word* for italics."
               }
@@ -514,10 +514,10 @@ const newPiece: Piece = {
                 border: "0.5px solid var(--border-strong)",
                 color: "var(--text)",
                 fontFamily:
-                  form.category === "Poetry"
+                  form.category === "Stroke"
                     ? "var(--font-playfair)"
                     : "var(--font-inter)",
-                fontStyle: form.category === "Poetry" ? "italic" : "normal",
+                fontStyle: form.category === "Stroke" ? "italic" : "normal",
                 fontSize: "15px",
                 lineHeight: 1.8,
                 outline: "none",
