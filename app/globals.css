@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=The+Nautigal:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,6 +10,7 @@
   --font-playfair: 'Playfair Display', Georgia, serif;
   --font-ibm-plex-mono: 'IBM Plex Mono', 'Courier New', monospace;
   --font-inter: 'Inter', system-ui, sans-serif;
+  --font-nautigal: 'The Nautigal', normal, cursive; 
   --bg: #f5f2eb;
   --surface: #faf8f3;
   --surface-hover: #f0ede4;
