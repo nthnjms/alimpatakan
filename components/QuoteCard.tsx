@@ -30,7 +30,7 @@ export default function QuoteCard() {
         }}
         aria-hidden="true"
       >
-        "
+        &ldquo;
       </div>
       <div
         style={{
@@ -48,7 +48,7 @@ export default function QuoteCard() {
         }}
         aria-hidden="true"
       >
-        "
+        &ldquo;
       </div>
 
       {/* Accent line */}
@@ -74,7 +74,7 @@ export default function QuoteCard() {
           zIndex: 1,
         }}
       >
-        "{quote.text}"
+        &ldquo;{quote.text}&rdquo;
       </blockquote>
 
       <div

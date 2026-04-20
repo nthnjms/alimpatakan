@@ -2,6 +2,7 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 export default function Logo() {
   const { theme } = useTheme();
@@ -16,7 +17,7 @@ export default function Logo() {
   const isDark = theme === "dark";
 
   return (
-    <img
+    <Image
       src={isDark ? "/logo-white.png" : "/logo-black.png"}
       alt="ALIMPATAKAN"
       style={{

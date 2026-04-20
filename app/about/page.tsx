@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllPieces, getIssueNumber } from "@/lib/pieces";
 import DarkModeToggle from "@/components/DarkModeToggle";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "About",
@@ -96,7 +97,7 @@ export default function AboutPage() {
               marginBottom: "24px",
             }}
           >
-            <img
+            <Image
               src="/photo.jpg"
               alt="Nathan"
               style={{
