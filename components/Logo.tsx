@@ -2,7 +2,6 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 export default function Logo() {
   const { theme } = useTheme();
@@ -12,19 +11,23 @@ export default function Logo() {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null;
+  if (!mounted) return (
+    <div style={{ height: "clamp(60px, 10vw, 120px)" }} />
+  );
 
   const isDark = theme === "dark";
 
   return (
-    <Image
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
       src={isDark ? "/logo-white.png" : "/logo-black.png"}
       alt="ALIMPATAKAN"
       style={{
-        width: "clamp(600px, 40vw, 600px)",
-        height: "auto",
+        height: "clamp(60px, 10vw, 120px)",
+        width: "auto",
         display: "block",
         margin: "0 auto",
+        maxWidth: "100%",
       }}
     />
   );

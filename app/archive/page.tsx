@@ -6,7 +6,7 @@ import {
   formatDateShort,
   type Category,
 } from "@/lib/pieces";
-import DarkModeToggle from "@/components/DarkModeToggle";
+import MainNav from "@/components/MainNav";
 
 export const metadata: Metadata = {
   title: "Archive",
@@ -39,22 +39,7 @@ export default function ArchivePage({
       <div className="accent-bar" />
 
       {/* Top Bar */}
-      <div className="rule-thin" style={{ padding: "6px 24px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <Link href="/" className="dateline" style={{ color: "var(--text-muted)" }}>
-          ← ALIMPATAKAN
-        </Link>
-        <span style={{
-          background: "var(--text)",
-          color: "var(--bg)",
-          fontFamily: "var(--font-ibm-plex-mono)",
-          fontSize: "9px",
-          letterSpacing: "0.15em",
-          padding: "3px 10px",
-        }}>
-          {issueNumber}
-        </span>
-        <DarkModeToggle />
-      </div>
+    <MainNav />
 
       {/* Header */}
       <div style={{ padding: "32px 24px 24px", borderBottom: "3px solid var(--rule)" }}>

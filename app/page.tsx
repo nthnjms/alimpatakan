@@ -7,12 +7,12 @@ import {
   formatDate,
   formatDateShort,
 } from "@/lib/pieces";
-import DarkModeToggle from "@/components/DarkModeToggle";
 import LiveClock from "@/components/LiveClock";
 import Logo from "@/components/Logo";
 import QuoteCard from "@/components/QuoteCard";
 import AnimateIn from "@/components/AnimateIn";
 import Ticker from "@/components/Ticker";
+import MainNav from "@/components/MainNav";
 
 export const metadata: Metadata = {
   title: "ALIMPATAKAN",
@@ -152,28 +152,7 @@ export default function HomePage() {
       </div>
 
       {/* Nav */}
-      <div
-        className="rule-thin main-nav"
-        style={{
-          padding: "10px 24px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <nav style={{ display: "flex", gap: "24px" }}>
-          {[
-            { label: "Front Page", href: "/" },
-            { label: "Archive", href: "/archive" },
-            { label: "About", href: "/about" },
-          ].map((item) => (
-            <Link key={item.href} href={item.href} className="nav-link">
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <DarkModeToggle />
-      </div>
+      <MainNav />
 
       {/* Hero */}
       <div
@@ -250,9 +229,37 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="label-accent" style={{ marginBottom: "14px" }}>
+<div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "14px" }}>
+            <div className="label-accent" style={{ margin: 0 }}>
               {featured.category}
             </div>
+            {featured.restricted && (
+              <span style={{
+                fontFamily: "var(--font-ibm-plex-mono)",
+                fontSize: "8px",
+                color: "var(--text-faint)",
+                border: "0.5px solid var(--border)",
+                padding: "2px 6px",
+                borderRadius: "1px",
+              }}>
+                🔒
+              </span>
+            )}
+            {featured.r18 && (
+              <span style={{
+                fontFamily: "var(--font-ibm-plex-mono)",
+                fontSize: "8px",
+                fontWeight: 700,
+                letterSpacing: "0.05em",
+                color: "var(--bg)",
+                background: "var(--text)",
+                padding: "2px 6px",
+                borderRadius: "1px",
+              }}>
+                R18
+              </span>
+            )}
+          </div>
 
             <Link href={`/${featured.slug}`} className="hero-headline-link">
               <h2
@@ -360,6 +367,7 @@ export default function HomePage() {
                       />
                     </div>
                     <div>
+                      <div style={{ display: "flex", gap: "6px", alignItems: "center", marginBottom: "4px" }}>
                       <p
                         style={{
                           fontFamily: "var(--font-ibm-plex-mono)",
@@ -367,11 +375,37 @@ export default function HomePage() {
                           letterSpacing: "0.2em",
                           color: "var(--accent)",
                           textTransform: "uppercase",
-                          marginBottom: "4px",
                         }}
                       >
                         {piece.category}
                       </p>
+                      {piece.restricted && (
+                        <span style={{
+                          fontFamily: "var(--font-ibm-plex-mono)",
+                          fontSize: "7px",
+                          color: "var(--text-faint)",
+                          border: "0.5px solid var(--border)",
+                          padding: "1px 4px",
+                          borderRadius: "1px",
+                        }}>
+                          🔒
+                        </span>
+                      )}
+                      {piece.r18 && (
+                        <span style={{
+                          fontFamily: "var(--font-ibm-plex-mono)",
+                          fontSize: "7px",
+                          fontWeight: 700,
+                          letterSpacing: "0.05em",
+                          color: "var(--bg)",
+                          background: "var(--text)",
+                          padding: "1px 4px",
+                          borderRadius: "1px",
+                        }}>
+                          R18
+                        </span>
+                      )}
+                    </div>
                       <p
                         style={{
                           fontFamily: "var(--font-playfair)",
@@ -481,22 +515,52 @@ export default function HomePage() {
                       CATEGORY_COLORS[piece.category] ?? "var(--accent)",
                   }}
                 />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: "10px",
-                    left: "10px",
+<div
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  left: "10px",
+                  display: "flex",
+                  gap: "4px",
+                  alignItems: "center",
+                }}
+              >
+                <span style={{
+                  fontFamily: "var(--font-ibm-plex-mono)",
+                  fontSize: "7px",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: "rgba(255,255,255,0.6)",
+                  border: "0.5px solid rgba(255,255,255,0.15)",
+                  padding: "2px 6px",
+                }}>
+                  {piece.category}
+                </span>
+                {piece.restricted && (
+                  <span style={{
                     fontFamily: "var(--font-ibm-plex-mono)",
                     fontSize: "7px",
-                    letterSpacing: "0.2em",
-                    textTransform: "uppercase",
                     color: "rgba(255,255,255,0.6)",
                     border: "0.5px solid rgba(255,255,255,0.15)",
-                    padding: "2px 6px",
-                  }}
-                >
-                  {piece.category}
-                </div>
+                    padding: "2px 5px",
+                  }}>
+                    🔒
+                  </span>
+                )}
+                {piece.r18 && (
+                  <span style={{
+                    fontFamily: "var(--font-ibm-plex-mono)",
+                    fontSize: "7px",
+                    fontWeight: 700,
+                    letterSpacing: "0.05em",
+                    color: "rgba(0,0,0,0.8)",
+                    background: "rgba(255,255,255,0.85)",
+                    padding: "2px 5px",
+                  }}>
+                    R18
+                  </span>
+                )}
+              </div>
               </div>
 
               <div

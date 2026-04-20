@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllPieces, getIssueNumber } from "@/lib/pieces";
-import DarkModeToggle from "@/components/DarkModeToggle";
+import MainNav from "@/components/MainNav";
 import Image from "next/image";
 
 export const metadata: Metadata = {
@@ -18,32 +18,7 @@ export default function AboutPage() {
     <main className="page-enter min-h-screen">
       <div className="accent-bar" />
 
-      <div
-        className="rule-thin"
-        style={{
-          padding: "6px 24px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Link href="/" className="dateline nav-link">
-          ← ALIMPATAKAN
-        </Link>
-        <span
-          style={{
-            background: "var(--text)",
-            color: "var(--bg)",
-            fontFamily: "var(--font-ibm-plex-mono)",
-            fontSize: "9px",
-            letterSpacing: "0.15em",
-            padding: "3px 10px",
-          }}
-        >
-          {issueNumber}
-        </span>
-        <DarkModeToggle />
-      </div>
+    <MainNav />
 
       <div
         style={{

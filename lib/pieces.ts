@@ -20,6 +20,7 @@ export type Piece = {
   readTime: string;
   featured: boolean;
   restricted?: boolean;
+  r18?: boolean;
 };
 
 // ─── Raw data cast to typed array ────────────────────────────────────────────

@@ -9,9 +9,10 @@ import {
   formatDate,
   formatContent,
 } from "@/lib/pieces";
-import DarkModeToggle from "@/components/DarkModeToggle";
+import MainNav from "@/components/MainNav";
 import ReadingProgress from "@/components/ReadingProgress";
 import LockedContent from "@/components/LockedContent";
+import R18Gate from "@/components/R18Gate";
 
 export async function generateStaticParams() {
   return getAllPieces().map((p) => ({ slug: p.slug }));
@@ -54,23 +55,7 @@ export default function PiecePage({
       <div className="accent-bar" />
 
       {/* Top Bar */}
-      <div
-        className="rule-thin"
-        style={{
-          padding: "6px 24px",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Link href="/" className="dateline nav-link">
-          ← ALIMPATAKAN
-        </Link>
-        <Link href="/archive" className="dateline nav-link">
-          Archive
-        </Link>
-        <DarkModeToggle />
-      </div>
+    <MainNav />
 
       {/* Article Header — always visible */}
       <div
@@ -84,12 +69,13 @@ export default function PiecePage({
         }}
       >
         {/* Category + lock badge */}
-        <div
+<div
           style={{
             display: "flex",
             alignItems: "center",
             gap: "12px",
             marginBottom: "20px",
+            flexWrap: "wrap",
           }}
         >
           <div className="label-accent">{piece.category}</div>
@@ -107,6 +93,22 @@ export default function PiecePage({
               }}
             >
               🔒 Restricted
+            </span>
+          )}
+          {piece.r18 && (
+            <span
+              style={{
+                fontFamily: "var(--font-ibm-plex-mono)",
+                fontSize: "8px",
+                letterSpacing: "0.05em",
+                fontWeight: 700,
+                color: "var(--bg)",
+                background: "var(--text)",
+                padding: "2px 8px",
+                borderRadius: "1px",
+              }}
+            >
+              R18
             </span>
           )}
         </div>
@@ -158,6 +160,7 @@ export default function PiecePage({
       </div>
 
       {/* Article Body — gated if restricted */}
+      {/* Article Body */}
       <div
         className="piece-body"
         style={{
@@ -174,6 +177,13 @@ export default function PiecePage({
               dangerouslySetInnerHTML={{ __html: formattedContent }}
             />
           </LockedContent>
+        ) : piece.r18 ? (
+          <R18Gate slug={piece.slug}>
+            <div
+              className={isPoetry ? "poetry-body" : "article-body"}
+              dangerouslySetInnerHTML={{ __html: formattedContent }}
+            />
+          </R18Gate>
         ) : (
           <div
             className={isPoetry ? "poetry-body" : "article-body"}

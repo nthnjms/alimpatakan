@@ -69,5 +69,16 @@
   "readTime": "1 min read",
   "featured": false,
   "restricted": true
+},
+{
+  "slug": "r18-test-piece",
+  "title": "After the party, before the morning",
+  "category": "Fiction",
+  "date": "2026-04-20",
+  "excerpt": "A piece for adults. What happens when two people who should know better decide they don't care.",
+  "content": "This is where your mature content goes.\n\nThe R18 gate will appear before this text is visible to any reader who hasn't confirmed their age.",
+  "readTime": "3 min read",
+  "featured": false,
+  "r18": true
 }
 ]

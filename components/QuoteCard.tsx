@@ -65,11 +65,11 @@ export default function QuoteCard() {
         style={{
           fontFamily: "var(--font-playfair)",
           fontStyle: "italic",
-          fontSize: "clamp(50px, 3vw, 32px)",
+          fontSize: "clamp(80px, 3vw, 32px)",
           lineHeight: 1.4,
           color: "var(--text)",
           maxWidth: "1000px",
-          margin: "0 0 24px 0",
+          margin: "0 0 18px 0",
           position: "relative",
           zIndex: 1,
         }}

@@ -47,6 +47,7 @@ const [form, setForm] = useState({
     content: "",
     featured: false,
     restricted: false,
+    r18: false,
   });
 
   useEffect(() => {
@@ -83,6 +84,7 @@ const newPiece: Piece = {
       readTime: calculateReadTime(form.content),
       featured: form.featured,
       restricted: form.restricted,
+      r18: form.r18,
     };
 
     const res = await fetch("/api/pieces", {
@@ -104,6 +106,7 @@ const newPiece: Piece = {
         content: "",
         featured: false,
         restricted: false,
+        r18: false,
       });
     }
   };
@@ -325,7 +328,7 @@ const newPiece: Piece = {
           </div>
 
           {/* Category + Date row */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: "16px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr", gap: "16px" }}>
             <div>
               <label className="dateline" style={{ display: "block", marginBottom: "8px" }}>
                 Category
@@ -426,6 +429,30 @@ const newPiece: Piece = {
               </button>
             </div>
           </div>
+            
+            <div>
+              <label className="dateline" style={{ display: "block", marginBottom: "8px" }}>
+                Rating
+              </label>
+              <button
+                onClick={() => setForm({ ...form, r18: !form.r18 })}
+                style={{
+                  width: "100%",
+                  padding: "10px 12px",
+                  background: form.r18 ? "var(--text)" : "var(--surface)",
+                  border: "0.5px solid var(--border-strong)",
+                  color: form.r18 ? "var(--bg)" : "var(--text-muted)",
+                  fontFamily: "var(--font-ibm-plex-mono)",
+                  fontSize: "10px",
+                  letterSpacing: "0.1em",
+                  cursor: "none",
+                  borderRadius: "2px",
+                  textAlign: "left" as const,
+                }}
+              >
+                {form.r18 ? "R18 — Mature" : "All Ages"}
+              </button>
+            </div>
 
           {/* Excerpt */}
           <div>
