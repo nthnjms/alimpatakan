@@ -12,6 +12,7 @@ import LiveClock from "@/components/LiveClock";
 import Logo from "@/components/Logo";
 import QuoteCard from "@/components/QuoteCard";
 import AnimateIn from "@/components/AnimateIn";
+import Ticker from "@/components/Ticker";
 
 export const metadata: Metadata = {
   title: "ALIMPATAKAN",
@@ -23,6 +24,7 @@ const CATEGORY_THUMBS: Record<string, string> = {
   Essay: "📝",
   Poetry: "🌿",
   "Short Story": "📖",
+  Fiction: "🖋️",
   Reflection: "🪞",
   Nonfiction: "🗂️",
 };
@@ -31,6 +33,7 @@ const CATEGORY_THUMB_CLASS: Record<string, string> = {
   Essay: "thumb-essay",
   Poetry: "thumb-poetry",
   "Short Story": "thumb-story",
+  Fiction: "thumb-fiction",
   Reflection: "thumb-reflection",
   Nonfiction: "thumb-nonfiction",
 };
@@ -39,6 +42,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   Essay: "#4A90D9",
   Poetry: "#9B59B6",
   "Short Story": "#27AE60",
+  Fiction: "#1ABC9C",
   Reflection: "#E67E22",
   Nonfiction: "#E74C3C",
 };
@@ -60,6 +64,15 @@ export default function HomePage() {
 
       <div className="accent-bar-animated" />
 
+      {/* Ticker */}
+      <Ticker
+        items={recent.map((p) => ({
+          title: p.title,
+          slug: p.slug,
+          category: p.category,
+        }))}
+      />
+
       {/* Top Bar */}
       <div
         className="rule-thin top-bar"
@@ -78,7 +91,7 @@ export default function HomePage() {
         </div>
         </div>
         <nav className="top-bar-nav" style={{ display: "flex", gap: "20px" }}>
-          {["Essay", "Poetry", "Short Story", "Reflection", "Nonfiction"].map(
+          {["Essay", "Poetry", "Short Story", "Fiction", "Reflection", "Nonfiction"].map(
             (cat) => (
               <Link
                 key={cat}

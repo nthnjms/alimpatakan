@@ -203,15 +203,32 @@ export default function ArchivePage({
                 {/* Main content */}
                 <div>
                   <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "6px" }}>
-                    <span style={{
-                      fontFamily: "var(--font-ibm-plex-mono)",
-                      fontSize: "8px",
-                      letterSpacing: "0.2em",
-                      textTransform: "uppercase",
-                      color: "var(--accent)",
-                    }}>
-                      {piece.category}
-                    </span>
+<span
+                        style={{
+                          fontFamily: "var(--font-ibm-plex-mono)",
+                          fontSize: "8px",
+                          letterSpacing: "0.2em",
+                          textTransform: "uppercase",
+                          color: "var(--accent)",
+                        }}
+                      >
+                        {piece.category}
+                      </span>
+                      {piece.restricted && (
+                        <span
+                          style={{
+                            fontFamily: "var(--font-ibm-plex-mono)",
+                            fontSize: "8px",
+                            letterSpacing: "0.1em",
+                            color: "var(--text-faint)",
+                            border: "0.5px solid var(--border)",
+                            padding: "1px 6px",
+                            borderRadius: "1px",
+                          }}
+                        >
+                          🔒
+                        </span>
+                      )}
                     {piece.featured && (
                       <span style={{
                         fontFamily: "var(--font-ibm-plex-mono)",

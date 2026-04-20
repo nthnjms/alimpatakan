@@ -631,3 +631,10 @@ a {
 .cat-pill:hover {
   transform: scale(1.05);
 }
+
+.thumb-fiction {
+  background: linear-gradient(135deg, #0a2e2e 0%, #1b4a4a 50%, #073a3a 100%);
+}
+.dark .thumb-fiction {
+  background: linear-gradient(135deg, #051616 0%, #0d2222 50%, #031d1d 100%);
+}

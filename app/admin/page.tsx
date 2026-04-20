@@ -8,6 +8,7 @@ const CATEGORIES: Category[] = [
   "Essay",
   "Poetry",
   "Short Story",
+  "Fiction",
   "Reflection",
   "Nonfiction",
 ];
@@ -38,13 +39,14 @@ export default function AdminPage() {
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
 
-  const [form, setForm] = useState({
+const [form, setForm] = useState({
     title: "",
     category: "Essay" as Category,
     date: new Date().toISOString().split("T")[0],
     excerpt: "",
     content: "",
     featured: false,
+    restricted: false,
   });
 
   useEffect(() => {
@@ -71,7 +73,7 @@ export default function AdminPage() {
   const handleAdd = async () => {
     if (!form.title || !form.content || !form.excerpt) return;
 
-    const newPiece: Piece = {
+const newPiece: Piece = {
       slug: slugify(form.title),
       title: form.title,
       category: form.category,
@@ -80,6 +82,7 @@ export default function AdminPage() {
       content: form.content,
       readTime: calculateReadTime(form.content),
       featured: form.featured,
+      restricted: form.restricted,
     };
 
     const res = await fetch("/api/pieces", {
@@ -100,6 +103,7 @@ export default function AdminPage() {
         excerpt: "",
         content: "",
         featured: false,
+        restricted: false,
       });
     }
   };
@@ -321,7 +325,7 @@ export default function AdminPage() {
           </div>
 
           {/* Category + Date row */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "16px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: "16px" }}>
             <div>
               <label className="dateline" style={{ display: "block", marginBottom: "8px" }}>
                 Category
@@ -395,6 +399,30 @@ export default function AdminPage() {
                 }}
               >
                 {form.featured ? "✓ Featured" : "Set as Featured"}
+              </button>
+            </div>
+
+          <div>
+              <label className="dateline" style={{ display: "block", marginBottom: "8px" }}>
+                Visibility
+              </label>
+              <button
+                onClick={() => setForm({ ...form, restricted: !form.restricted })}
+                style={{
+                  width: "100%",
+                  padding: "10px 12px",
+                  background: form.restricted ? "var(--text)" : "var(--surface)",
+                  border: "0.5px solid var(--border-strong)",
+                  color: form.restricted ? "var(--bg)" : "var(--text-muted)",
+                  fontFamily: "var(--font-ibm-plex-mono)",
+                  fontSize: "10px",
+                  letterSpacing: "0.1em",
+                  cursor: "none",
+                  borderRadius: "2px",
+                  textAlign: "left" as const,
+                }}
+              >
+                {form.restricted ? "🔒 Private" : "🌐 Public"}
               </button>
             </div>
           </div>

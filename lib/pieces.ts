@@ -6,6 +6,7 @@ export type Category =
   | "Essay"
   | "Poetry"
   | "Short Story"
+  | "Fiction"
   | "Reflection"
   | "Nonfiction";
 
@@ -18,6 +19,7 @@ export type Piece = {
   content: string;
   readTime: string;
   featured: boolean;
+  restricted?: boolean;
 };
 
 // ─── Raw data cast to typed array ────────────────────────────────────────────
@@ -188,4 +190,16 @@ export function getIssueNumber(): string {
   const total = allPieces.length;
   const issue = Math.ceil(total / 4);
   return `VOL. I — NO. ${issue}`;
+}
+
+export function getRestrictedPieces(): Piece[] {
+  return [...allPieces]
+    .filter((p) => p.restricted)
+    .sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+}
+
+export function getRestrictedPieceBySlug(slug: string): Piece | undefined {
+  return allPieces.find((p) => p.slug === slug && p.restricted);
 }

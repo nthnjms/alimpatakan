@@ -5,14 +5,16 @@ import {
   getPieceBySlug,
   getRelatedPieces,
   getAllSlugs,
+  getAllPieces,
   formatDate,
   formatContent,
 } from "@/lib/pieces";
 import DarkModeToggle from "@/components/DarkModeToggle";
 import ReadingProgress from "@/components/ReadingProgress";
+import LockedContent from "@/components/LockedContent";
 
 export async function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }));
+  return getAllPieces().map((p) => ({ slug: p.slug }));
 }
 
 export async function generateMetadata({
@@ -43,15 +45,11 @@ export default function PiecePage({
   if (!piece) notFound();
 
   const related = getRelatedPieces(params.slug, 3);
-  console.log("doc height:", typeof window !== "undefined" ? document.documentElement.scrollHeight : "SSR");
   const formattedContent = formatContent(piece.content, piece.category);
   const isPoetry = piece.category === "Poetry";
 
   return (
-    <main className="page-enter" style={{ minHeight: "100vh" }}>
-
-    <div style={{ position: "fixed", top: 0, left: 0, width: "100px", height: "10px", background: "red", zIndex: 99999 }} />
-
+    <main className="page-enter min-h-screen">
       <ReadingProgress />
       <div className="accent-bar" />
 
@@ -74,21 +72,45 @@ export default function PiecePage({
         <DarkModeToggle />
       </div>
 
-      {/* Article Header */}
+      {/* Article Header — always visible */}
       <div
         className="piece-header"
         style={{
           padding: "48px 24px 36px",
           borderBottom: "3px solid var(--rule)",
           maxWidth: "860px",
+          margin: "0 auto",
+          width: "100%",
         }}
       >
-        {/* Category */}
-        <div className="label-accent" style={{ marginBottom: "20px" }}>
-          {piece.category}
+        {/* Category + lock badge */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            marginBottom: "20px",
+          }}
+        >
+          <div className="label-accent">{piece.category}</div>
+          {piece.restricted && (
+            <span
+              style={{
+                fontFamily: "var(--font-ibm-plex-mono)",
+                fontSize: "8px",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: "var(--accent)",
+                border: "0.5px solid var(--accent)",
+                padding: "2px 8px",
+                borderRadius: "1px",
+              }}
+            >
+              🔒 Restricted
+            </span>
+          )}
         </div>
 
-        {/* Title */}
         <h1
           style={{
             fontFamily: "var(--font-playfair)",
@@ -103,7 +125,6 @@ export default function PiecePage({
           {piece.title}
         </h1>
 
-        {/* Excerpt / Deck */}
         <p
           style={{
             fontFamily: "var(--font-playfair)",
@@ -118,7 +139,6 @@ export default function PiecePage({
           {piece.excerpt}
         </p>
 
-        {/* Byline */}
         <div
           style={{
             display: "flex",
@@ -137,21 +157,32 @@ export default function PiecePage({
         </div>
       </div>
 
-      {/* Article Body */}
+      {/* Article Body — gated if restricted */}
       <div
         className="piece-body"
         style={{
           padding: "48px 24px 64px",
           maxWidth: "860px",
+          margin: "0 auto",
+          width: "100%",
         }}
       >
-        <div
-          className={isPoetry ? "poetry-body" : "article-body"}
-          dangerouslySetInnerHTML={{ __html: formattedContent }}
-        />
+        {piece.restricted ? (
+          <LockedContent slug={piece.slug}>
+            <div
+              className={isPoetry ? "poetry-body" : "article-body"}
+              dangerouslySetInnerHTML={{ __html: formattedContent }}
+            />
+          </LockedContent>
+        ) : (
+          <div
+            className={isPoetry ? "poetry-body" : "article-body"}
+            dangerouslySetInnerHTML={{ __html: formattedContent }}
+          />
+        )}
       </div>
 
-      {/* Bottom Rule */}
+      {/* Footer nav + related — always visible */}
       <div
         style={{
           maxWidth: "860px",
@@ -160,10 +191,14 @@ export default function PiecePage({
           width: "100%",
         }}
       >
-        <div style={{ borderTop: "3px solid var(--rule)", paddingTop: "32px" }}>
-
-          {/* Share / Nav row */}
+        <div
+          style={{
+            borderTop: "3px solid var(--rule)",
+            paddingTop: "32px",
+          }}
+        >
           <div
+            className="piece-footer-nav"
             style={{
               display: "flex",
               justifyContent: "space-between",
@@ -179,7 +214,6 @@ export default function PiecePage({
             </Link>
           </div>
 
-          {/* Related Pieces */}
           {related.length > 0 && (
             <div style={{ marginBottom: "48px" }}>
               <div
@@ -199,7 +233,6 @@ export default function PiecePage({
                   }}
                 />
               </div>
-
               <div
                 className="related-grid"
                 style={{
@@ -222,18 +255,29 @@ export default function PiecePage({
                       borderTop: "0.5px solid var(--border)",
                     }}
                   >
-                    <p
+                    <div
                       style={{
-                        fontFamily: "var(--font-ibm-plex-mono)",
-                        fontSize: "8px",
-                        letterSpacing: "0.2em",
-                        color: "var(--accent)",
-                        textTransform: "uppercase",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
                         marginBottom: "8px",
                       }}
                     >
-                      {rel.category}
-                    </p>
+                      <p
+                        style={{
+                          fontFamily: "var(--font-ibm-plex-mono)",
+                          fontSize: "8px",
+                          letterSpacing: "0.2em",
+                          color: "var(--accent)",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {rel.category}
+                      </p>
+                      {rel.restricted && (
+                        <span style={{ fontSize: "10px" }}>🔒</span>
+                      )}
+                    </div>
                     <h3
                       style={{
                         fontFamily: "var(--font-playfair)",
@@ -263,14 +307,13 @@ export default function PiecePage({
         </div>
       </div>
 
-      {/* Footer */}
       <div
-          className="piece-footer-nav"
-          style={{
+        style={{
+          padding: "14px 24px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          marginBottom: "48px",
+          borderTop: "0.5px solid var(--border)",
         }}
       >
         <span className="dateline">ALIMPATAKAN</span>

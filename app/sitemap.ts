@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const pieceRoutes: MetadataRoute.Sitemap = pieces.map((piece) => ({
+ const pieceRoutes: MetadataRoute.Sitemap = pieces.map((piece) => ({
     url: `${baseUrl}/${piece.slug}`,
     lastModified: new Date(piece.date),
     changeFrequency: "never" as const,
