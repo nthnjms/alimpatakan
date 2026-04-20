@@ -10,15 +10,16 @@ import MainNav from "@/components/MainNav";
 
 export const metadata: Metadata = {
   title: "Archive",
-  description: "All pieces published in ALIMPATAKAN — essays, poetry, short stories, reflections, and nonfiction.",
+  description: "Everything published in ALIMPATAKAN. Hardcore, Stroke, Quickie, Fantasy, Uncensored, Raw. All of it meant it.",
 };
 
 const CATEGORIES: Category[] = [
-  "Essay",
-  "Poetry",
-  "Short Story",
-  "Reflection",
-  "Nonfiction",
+  "Hardcore",
+  "Stroke",
+  "Quickie",
+  "Fantasy",
+  "Uncensored",
+  "Raw",
 ];
 
 export default function ArchivePage({
@@ -42,84 +43,72 @@ export default function ArchivePage({
     <MainNav />
 
       {/* Header */}
-      <div style={{ padding: "32px 24px 24px", borderBottom: "3px solid var(--rule)" }}>
+      <div
+        style={{
+          padding: "32px 24px 24px",
+          borderBottom: "3px solid var(--rule)",
+        }}
+      >
         <p className="dateline" style={{ marginBottom: "10px" }}>
           Complete Archive
         </p>
-        <h1 style={{
-          fontFamily: "var(--font-playfair)",
-          fontSize: "clamp(36px, 6vw, 72px)",
-          fontWeight: 900,
-          lineHeight: 0.9,
-          letterSpacing: "-2px",
-          color: "var(--text)",
-          marginBottom: "8px",
-        }}>
-          Every Piece,<br />Every Word.
+        <h1
+          style={{
+            fontFamily: "var(--font-playfair)",
+            fontSize: "clamp(36px, 6vw, 72px)",
+            fontWeight: 900,
+            lineHeight: 0.9,
+            letterSpacing: "-2px",
+            color: "var(--text)",
+            marginBottom: "8px",
+          }}
+        >
+          Everything.<br />Uncut.
         </h1>
-        <p style={{
-          fontFamily: "var(--font-ibm-plex-mono)",
-          fontSize: "10px",
-          color: "var(--text-muted)",
-          letterSpacing: "0.1em",
-          marginTop: "12px",
-        }}>
-          {allPieces.length} pieces published
+        <p
+          style={{
+            fontFamily: "var(--font-ibm-plex-mono)",
+            fontSize: "10px",
+            color: "var(--text-muted)",
+            letterSpacing: "0.1em",
+            marginTop: "12px",
+          }}
+        >
+          {allPieces.length} pieces. All of them meant it.
         </p>
       </div>
 
       {/* Category Filters */}
-      <div style={{
-        padding: "14px 24px",
-        borderBottom: "0.5px solid var(--border)",
-        display: "flex",
-        gap: "8px",
-        alignItems: "center",
-        flexWrap: "wrap",
-      }}>
-        <Link
-          href="/archive"
+      {activeCategory && (
+        <div
           style={{
-            fontFamily: "var(--font-ibm-plex-mono)",
-            fontSize: "9px",
-            letterSpacing: "0.15em",
-            textTransform: "uppercase" as const,
-            padding: "5px 12px",
-            border: !activeCategory
-              ? "0.5px solid var(--text)"
-              : "0.5px solid var(--border)",
-            color: !activeCategory ? "var(--bg)" : "var(--text-muted)",
-            background: !activeCategory ? "var(--text)" : "transparent",
-            borderRadius: "2px",
+            padding: "14px 24px",
+            borderBottom: "0.5px solid var(--border)",
+            background: "var(--surface)",
           }}
         >
-          All
-        </Link>
-        {CATEGORIES.map((cat) => {
-          const isActive = activeCategory === cat;
-          return (
-            <Link
-              key={cat}
-              href={`/archive?category=${encodeURIComponent(cat)}`}
-              style={{
-                fontFamily: "var(--font-ibm-plex-mono)",
-                fontSize: "9px",
-                letterSpacing: "0.15em",
-                textTransform: "uppercase" as const,
-                padding: "5px 12px",
-                border: isActive
-                  ? "0.5px solid var(--text)"
-                  : "0.5px solid var(--border)",
-                color: isActive ? "var(--bg)" : "var(--text-muted)",
-                background: isActive ? "var(--text)" : "transparent",
-                borderRadius: "2px",
-              }}
-            >
-              {cat}
-            </Link>
-          );
-        })}
-      </div>
+          <p
+            style={{
+              fontFamily: "var(--font-playfair)",
+              fontStyle: "italic",
+              fontSize: "14px",
+              lineHeight: 1.6,
+              color: "var(--text-muted)",
+            }}
+          >
+            {
+              {
+                Hardcore: "Structured arguments, cultural dissections, and opinions you'll die on. No softening. No apologies.",
+                Stroke: "Every line a brushstroke, a caress, a slow burn. Lyrical pieces that live under your skin after you've read them.",
+                Quickie: "Fast, sharp, and over before you're ready. Flash fiction that hits harder than its word count has any right to.",
+                Fantasy: "Invented worlds, real desires. Imaginative long-form work that goes places reality won't let you.",
+                Uncensored: "The thoughts you weren't supposed to say out loud. Personal, unfiltered, and uncomfortably honest.",
+                Raw: "True stories, witnessed lives, facts that need no embellishment. Reported and real — no filter, no performance.",
+              }[activeCategory]
+            }
+          </p>
+        </div>
+      )}
 
       {/* Results count */}
       <div style={{

@@ -3,12 +3,12 @@ import piecesData from "@/data/pieces.json";
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 export type Category =
-  | "Essay"
-  | "Poetry"
-  | "Short Story"
-  | "Fiction"
-  | "Reflection"
-  | "Nonfiction";
+  | "Hardcore"
+  | "Stroke"
+  | "Quickie"
+  | "Fantasy"
+  | "Uncensored"
+  | "Raw";
 
 export type Piece = {
   slug: string;
@@ -147,7 +147,7 @@ export function formatContent(
   content: string,
   category: Category
 ): string {
-  if (category === "Poetry") {
+  if (category === "Stroke") {
     return content
       .split("\n\n")
       .map((stanza) => {

@@ -17,34 +17,34 @@ import MainNav from "@/components/MainNav";
 export const metadata: Metadata = {
   title: "ALIMPATAKAN",
   description:
-    "A personal literary publication by Nathan. Essays, poetry, short stories, and reflections from a Visayan creative director in Manila.",
+    "A personal literary publication by Nathaniel James Toñacao. Hardcore, Stroke, Quickie, Fantasy, Uncensored, Raw — writing that doesn't apologize.",
 };
 
 const CATEGORY_THUMBS: Record<string, string> = {
-  Essay: "📝",
-  Poetry: "🌿",
-  "Short Story": "📖",
-  Fiction: "🖋️",
-  Reflection: "🪞",
-  Nonfiction: "🗂️",
+  Hardcore: "🖊️",
+  Stroke: "🌿",
+  Quickie: "⚡",
+  Fantasy: "🌑",
+  Uncensored: "🪞",
+  Raw: "🗂️",
 };
 
 const CATEGORY_THUMB_CLASS: Record<string, string> = {
-  Essay: "thumb-essay",
-  Poetry: "thumb-poetry",
-  "Short Story": "thumb-story",
-  Fiction: "thumb-fiction",
-  Reflection: "thumb-reflection",
-  Nonfiction: "thumb-nonfiction",
+  Hardcore: "thumb-essay",
+  Stroke: "thumb-poetry",
+  Quickie: "thumb-story",
+  Fantasy: "thumb-fiction",
+  Uncensored: "thumb-reflection",
+  Raw: "thumb-nonfiction",
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Essay: "#4A90D9",
-  Poetry: "#9B59B6",
-  "Short Story": "#27AE60",
-  Fiction: "#1ABC9C",
-  Reflection: "#E67E22",
-  Nonfiction: "#E74C3C",
+  Hardcore: "#4A90D9",
+  Stroke: "#9B59B6",
+  Quickie: "#27AE60",
+  Fantasy: "#1ABC9C",
+  Uncensored: "#E67E22",
+  Raw: "#E74C3C",
 };
 
 export default function HomePage() {
@@ -91,7 +91,7 @@ export default function HomePage() {
         </div>
         </div>
         <nav className="top-bar-nav" style={{ display: "flex", gap: "20px" }}>
-          {["Essay", "Poetry", "Short Story", "Fiction", "Reflection", "Nonfiction"].map(
+          {["Hardcore", "Stroke", "Quickie", "Fantasy", "Uncensored", "Raw"].map(
             (cat) => (
               <Link
                 key={cat}

@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: "%s — ALIMPATAKAN",
   },
   description:
-    "A personal literary publication by Nathan. Essays, poetry, short stories, and reflections from a Visayan creative director in Manila.",
+    "A personal literary publication by Nathaniel James Toñacao. Hardcore, Stroke, Quickie, Fantasy, Uncensored, Raw — writing that doesn't apologize.",
   authors: [{ name: "Nathan", url: "https://nthnlstudios.vercel.app" }],
   creator: "Nathan",
   openGraph: {

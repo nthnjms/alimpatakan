@@ -175,7 +175,7 @@ export default function AboutPage() {
               { label: "Origin", value: "Visayas" },
               { label: "Current Issue", value: issueNumber },
               { label: "Total Pieces", value: String(allPieces.length) },
-              { label: "Categories", value: "Essay, Poetry, Short Story, Reflection, Nonfiction" },
+              { label: "Categories", value: "Hardcore, Stroke, Quickie, Fantasy, Uncensored, Raw" },
               { label: "Frequency", value: "Whenever the words come" },
             ].map((item) => (
               <div
