@@ -528,3 +528,106 @@ a {
     height: 200px !important;
   }
 }
+
+/* ─── Rich Thumbnails ─── */
+.thumb-essay {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+.thumb-poetry {
+  background: linear-gradient(135deg, #1a0a2e 0%, #2d1b69 50%, #11073a 100%);
+}
+.thumb-story {
+  background: linear-gradient(135deg, #0a2e1a 0%, #1b4332 50%, #073a11 100%);
+}
+.thumb-reflection {
+  background: linear-gradient(135deg, #2e1a0a 0%, #6b3a2a 50%, #3a1507 100%);
+}
+.thumb-nonfiction {
+  background: linear-gradient(135deg, #2e0a0a 0%, #6b1a1a 50%, #3a0707 100%);
+}
+
+.dark .thumb-essay {
+  background: linear-gradient(135deg, #0d0d1a 0%, #0a1628 50%, #071f3d 100%);
+}
+.dark .thumb-poetry {
+  background: linear-gradient(135deg, #0d0516 0%, #160d35 50%, #080320 100%);
+}
+.dark .thumb-story {
+  background: linear-gradient(135deg, #051610 0%, #0d2219 50%, #031d09 100%);
+}
+.dark .thumb-reflection {
+  background: linear-gradient(135deg, #160d05 0%, #351d15 50%, #1d0a03 100%);
+}
+.dark .thumb-nonfiction {
+  background: linear-gradient(135deg, #160505 0%, #350d0d 50%, #1d0303 100%);
+}
+
+/* Thumb text glow */
+.thumb-glyph {
+  font-size: 64px;
+  opacity: 0.15;
+  filter: blur(1px);
+  user-select: none;
+}
+
+/* Card lift on hover */
+.card-lift {
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.dark .card-lift:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Masthead entrance animation */
+.masthead-animate {
+  animation: mastheadIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes mastheadIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+    letter-spacing: 4px;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: -3px;
+  }
+}
+
+/* Accent bar pulse */
+.accent-bar-animated {
+  height: 3px;
+  background: var(--accent);
+  width: 100%;
+  animation: accentPulse 3s ease-in-out infinite;
+}
+
+@keyframes accentPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Category pill */
+.cat-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 1px;
+  font-family: var(--font-ibm-plex-mono);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: transform 0.2s ease;
+}
+
+.cat-pill:hover {
+  transform: scale(1.05);
+}
