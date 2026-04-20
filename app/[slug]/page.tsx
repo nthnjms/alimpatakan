@@ -47,7 +47,7 @@ export default function PiecePage({
 
   const related = getRelatedPieces(params.slug, 3);
   const formattedContent = formatContent(piece.content, piece.category);
-  const isPoetry = piece.category === "Poetry";
+  const isPoetry = piece.category === "Stroke";
 
   return (
     <main className="page-enter min-h-screen">
