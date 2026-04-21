@@ -13,6 +13,7 @@ import QuoteCard from "@/components/QuoteCard";
 import AnimateIn from "@/components/AnimateIn";
 import Ticker from "@/components/Ticker";
 import MainNav from "@/components/MainNav";
+import CategoryTooltip from "@/components/CategoryTooltip";
 
 export const metadata: Metadata = {
   title: "ALIMPATAKAN",
@@ -95,7 +96,7 @@ export default function HomePage() {
             (cat) => (
               <Link
                 key={cat}
-                href={`/archive?category=${encodeURIComponent(cat)}`}
+                href={`/category/${cat.toLowerCase().replace(" ", "-")}`}
                 className="dateline top-cat-link"
               >
                 {cat}
@@ -229,10 +230,12 @@ export default function HomePage() {
               </div>
             </div>
 
-<div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "14px" }}>
-            <div className="label-accent" style={{ margin: 0 }}>
-              {featured.category}
-            </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "14px" }}>
+            <CategoryTooltip category={featured.category}>
+              <div className="label-accent" style={{ margin: 0 }}>
+                {featured.category}
+              </div>
+            </CategoryTooltip>
             {featured.restricted && (
               <span style={{
                 fontFamily: "var(--font-ibm-plex-mono)",
@@ -367,18 +370,20 @@ export default function HomePage() {
                       />
                     </div>
                     <div>
-                      <div style={{ display: "flex", gap: "6px", alignItems: "center", marginBottom: "4px" }}>
-                      <p
-                        style={{
-                          fontFamily: "var(--font-ibm-plex-mono)",
-                          fontSize: "8px",
-                          letterSpacing: "0.2em",
-                          color: "var(--accent)",
-                          textTransform: "uppercase",
-                        }}
-                      >
-                        {piece.category}
-                      </p>
+                    <div style={{ display: "flex", gap: "6px", alignItems: "center", marginBottom: "4px" }}>
+                      <CategoryTooltip category={piece.category}>
+                        <p
+                          style={{
+                            fontFamily: "var(--font-ibm-plex-mono)",
+                            fontSize: "8px",
+                            letterSpacing: "0.2em",
+                            color: "var(--accent)",
+                            textTransform: "uppercase",
+                          }}
+                        >
+                          {piece.category}
+                        </p>
+                      </CategoryTooltip>
                       {piece.restricted && (
                         <span style={{
                           fontFamily: "var(--font-ibm-plex-mono)",
@@ -507,35 +512,26 @@ export default function HomePage() {
                 <div
                   style={{
                     position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    height: "3px",
-                    background:
-                      CATEGORY_COLORS[piece.category] ?? "var(--accent)",
+                    top: "10px",
+                    left: "10px",
+                    display: "flex",
+                    gap: "4px",
+                    alignItems: "center",
                   }}
-                />
-<div
-                style={{
-                  position: "absolute",
-                  top: "10px",
-                  left: "10px",
-                  display: "flex",
-                  gap: "4px",
-                  alignItems: "center",
-                }}
-              >
-                <span style={{
-                  fontFamily: "var(--font-ibm-plex-mono)",
-                  fontSize: "7px",
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  color: "rgba(255,255,255,0.6)",
-                  border: "0.5px solid rgba(255,255,255,0.15)",
-                  padding: "2px 6px",
-                }}>
-                  {piece.category}
-                </span>
+                >
+                  <CategoryTooltip category={piece.category}>
+                    <span style={{
+                      fontFamily: "var(--font-ibm-plex-mono)",
+                      fontSize: "7px",
+                      letterSpacing: "0.2em",
+                      textTransform: "uppercase",
+                      color: "rgba(255,255,255,0.6)",
+                      border: "0.5px solid rgba(255,255,255,0.15)",
+                      padding: "2px 6px",
+                    }}>
+                      {piece.category}
+                    </span>
+                  </CategoryTooltip>
                 {piece.restricted && (
                   <span style={{
                     fontFamily: "var(--font-ibm-plex-mono)",

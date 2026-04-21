@@ -13,6 +13,7 @@ import MainNav from "@/components/MainNav";
 import ReadingProgress from "@/components/ReadingProgress";
 import LockedContent from "@/components/LockedContent";
 import R18Gate from "@/components/R18Gate";
+import CategoryTooltip from "@/components/CategoryTooltip";
 
 export async function generateStaticParams() {
   return getAllPieces().map((p) => ({ slug: p.slug }));
@@ -69,16 +70,24 @@ export default function PiecePage({
         }}
       >
         {/* Category + lock badge */}
-<div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-            marginBottom: "20px",
-            flexWrap: "wrap",
-          }}
-        >
-          <div className="label-accent">{piece.category}</div>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              marginBottom: "20px",
+              flexWrap: "wrap",
+            }}
+          >
+            <CategoryTooltip category={piece.category}>
+              <Link
+                href={`/category/${piece.category.toLowerCase().replace(" ", "-")}`}
+                className="label-accent"
+                style={{ margin: 0 }}
+              >
+                {piece.category}
+              </Link>
+            </CategoryTooltip>
           {piece.restricted && (
             <span
               style={{

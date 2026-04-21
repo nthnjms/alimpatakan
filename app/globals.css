@@ -640,3 +640,21 @@ a {
 .dark .thumb-fiction {
   background: linear-gradient(135deg, #051616 0%, #0d2222 50%, #031d1d 100%);
 }
+
+.cat-pill-link {
+  font-family: var(--font-ibm-plex-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 0.5px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 2px;
+  display: inline-block;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.cat-pill-link:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}

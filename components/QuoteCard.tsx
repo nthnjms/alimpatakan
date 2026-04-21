@@ -6,7 +6,7 @@ export default function QuoteCard() {
   return (
     <div
       style={{
-        padding: "48px 40px",
+        padding: "clamp(28px, 5vw, 48px) clamp(16px, 4vw, 40px)",
         borderBottom: "0.5px solid var(--border)",
         position: "relative",
         overflow: "hidden",
@@ -18,9 +18,9 @@ export default function QuoteCard() {
         style={{
           position: "absolute",
           top: "-80px",
-          left: "1px",
+          left: "16px",
           fontFamily: "var(--font-nautigal)",
-          fontSize: "400px",
+          fontSize: "clamp(400px, 20vw, 200px)",
           fontWeight: 900,
           color: "var(--accent)",
           opacity: 0.06,
@@ -38,7 +38,7 @@ export default function QuoteCard() {
           bottom: "-460px",
           right: "24px",
           fontFamily: "var(--font-nautigal)",
-          fontSize: "800px",
+          fontSize: "clamp(800px, 20vw, 200px)",
           fontWeight: 900,
           color: "var(--accent)",
           opacity: 0.56,
@@ -58,6 +58,8 @@ export default function QuoteCard() {
           height: "3px",
           background: "var(--accent)",
           marginBottom: "24px",
+          position: "relative",
+          zIndex: 1,
         }}
       />
 
@@ -82,6 +84,8 @@ export default function QuoteCard() {
           display: "flex",
           alignItems: "center",
           gap: "8px",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         <div
@@ -89,13 +93,14 @@ export default function QuoteCard() {
             width: "24px",
             height: "0.5px",
             background: "var(--text-muted)",
+            flexShrink: 0,
           }}
         />
         <div>
           <p
             style={{
               fontFamily: "var(--font-ibm-plex-mono)",
-              fontSize: "20px",
+              fontSize: "clamp(25px, 1.5vw, 10px)",
               letterSpacing: "0.15em",
               textTransform: "uppercase",
               color: "var(--text)",
@@ -107,7 +112,7 @@ export default function QuoteCard() {
             <p
               style={{
                 fontFamily: "var(--font-ibm-plex-mono)",
-                fontSize: "12px",
+                fontSize: "clamp(14px, 1.2vw, 9px)",
                 letterSpacing: "0.1em",
                 color: "var(--text-muted)",
                 marginTop: "-4px",
