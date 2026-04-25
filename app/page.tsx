@@ -14,6 +14,7 @@ import AnimateIn from "@/components/AnimateIn";
 import Ticker from "@/components/Ticker";
 import MainNav from "@/components/MainNav";
 import CategoryTooltip from "@/components/CategoryTooltip";
+import WordCard from "@/components/WordCard";
 
 export const metadata: Metadata = {
   title: "ALIMPATAKAN",
@@ -445,9 +446,12 @@ export default function HomePage() {
         </AnimateIn>
       </div>
 
-      {/* Quote Card */}
+      {/* Quote + Word Row */}
       <AnimateIn delay={100}>
-        <QuoteCard />
+        <div className="quote-word-grid">
+          <QuoteCard />
+          <WordCard />
+        </div>
       </AnimateIn>
 
       {/* Section Label */}
