@@ -7,23 +7,26 @@ export default function QuoteCard() {
     <div
       style={{
         padding: "clamp(28px, 5vw, 48px) clamp(16px, 4vw, 40px)",
-        borderBottom: "0.5px solid var(--border)",
         position: "relative",
         overflow: "hidden",
         background: "var(--surface)",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        minHeight: "320px",
       }}
     >
-      {/* Large decorative quotation mark */}
+      {/* Top left decorative mark */}
       <div
         style={{
           position: "absolute",
-          top: "-80px",
+          top: "-20px",
           left: "16px",
-          fontFamily: "var(--font-nautigal)",
-          fontSize: "clamp(400px, 20vw, 200px)",
+          fontFamily: "var(--font-playfair)",
+          fontSize: "clamp(120px, 18vw, 220px)",
           fontWeight: 900,
           color: "var(--accent)",
-          opacity: 0.06,
+          opacity: 0.08,
           lineHeight: 1,
           userSelect: "none",
           pointerEvents: "none",
@@ -32,95 +35,96 @@ export default function QuoteCard() {
       >
         &ldquo;
       </div>
+
+      {/* Bottom right decorative mark */}
       <div
         style={{
           position: "absolute",
-          bottom: "-460px",
-          right: "24px",
-          fontFamily: "var(--font-nautigal)",
-          fontSize: "clamp(800px, 20vw, 200px)",
+          bottom: "-60px",
+          right: "16px",
+          fontFamily: "var(--font-playfair)",
+          fontSize: "clamp(120px, 18vw, 220px)",
           fontWeight: 900,
           color: "var(--accent)",
-          opacity: 0.56,
+          opacity: 0.08,
           lineHeight: 1,
           userSelect: "none",
           pointerEvents: "none",
+          transform: "scaleX(-1)",
         }}
         aria-hidden="true"
       >
         &ldquo;
       </div>
 
-      {/* Accent line */}
-      <div
-        style={{
-          width: "40px",
-          height: "3px",
-          background: "var(--accent)",
-          marginBottom: "24px",
-          position: "relative",
-          zIndex: 1,
-        }}
-      />
-
-      <blockquote
-        style={{
-          fontFamily: "var(--font-playfair)",
-          fontStyle: "italic",
-          fontSize: "clamp(80px, 3vw, 32px)",
-          lineHeight: 1.4,
-          color: "var(--text)",
-          maxWidth: "1000px",
-          margin: "0 0 18px 0",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        &ldquo;{quote.text}&rdquo;
-      </blockquote>
-
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "8px",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
+      {/* Content */}
+      <div style={{ position: "relative", zIndex: 1 }}>
+        {/* Accent line */}
         <div
           style={{
-            width: "24px",
-            height: "0.5px",
-            background: "var(--text-muted)",
-            flexShrink: 0,
+            width: "40px",
+            height: "3px",
+            background: "var(--accent)",
+            marginBottom: "24px",
           }}
         />
-        <div>
-          <p
+
+        <blockquote
+          style={{
+            fontFamily: "var(--font-playfair)",
+            fontStyle: "italic",
+            fontSize: "clamp(22px, 4vw, 48px)",
+            lineHeight: 1.3,
+            color: "var(--text)",
+            maxWidth: "900px",
+            margin: "0 0 24px 0",
+          }}
+        >
+          &ldquo;{quote.text}&rdquo;
+        </blockquote>
+
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+          }}
+        >
+          <div
             style={{
-              fontFamily: "var(--font-ibm-plex-mono)",
-              fontSize: "clamp(25px, 1.5vw, 10px)",
-              letterSpacing: "0.15em",
-              textTransform: "uppercase",
-              color: "var(--text)",
+              width: "24px",
+              height: "0.5px",
+              background: "var(--text-muted)",
+              flexShrink: 0,
             }}
-          >
-            {quote.author}
-          </p>
-          {quote.context && (
+          />
+          <div>
             <p
               style={{
                 fontFamily: "var(--font-ibm-plex-mono)",
-                fontSize: "clamp(14px, 1.2vw, 9px)",
-                letterSpacing: "0.1em",
-                color: "var(--text-muted)",
-                marginTop: "-4px",
+                fontSize: "clamp(10px, 1.2vw, 12px)",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                color: "var(--text)",
               }}
             >
-              {quote.context}
+              {quote.author}
             </p>
-          )}
+            {quote.context && (
+              <p
+                style={{
+                  fontFamily: "var(--font-ibm-plex-mono)",
+                  fontSize: "clamp(9px, 1vw, 10px)",
+                  letterSpacing: "0.1em",
+                  color: "var(--text-muted)",
+                  marginTop: "2px",
+                  textTransform: "lowercase",
+                }}
+              >
+                {quote.context}
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>

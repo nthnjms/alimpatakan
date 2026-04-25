@@ -161,7 +161,7 @@ export default function WordCard() {
               marginBottom: "4px",
             }}
           >
-            "{word.usage}"
+            &ldquo;{word.usage}&rdquo;
           </p>
           <p
             style={{
