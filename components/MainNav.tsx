@@ -15,15 +15,24 @@ export default function MainNav() {
 
   return (
     <div
-      className="rule-thin main-nav"
+      className="rule-thin"
       style={{
         padding: "10px 24px",
         display: "flex",
         justifyContent: "space-between",
         alignItems: "center",
+        gap: "12px",
       }}
     >
-      <nav style={{ display: "flex", gap: "24px", alignItems: "center" }}>
+      {/* Left — page links */}
+      <nav
+        style={{
+          display: "flex",
+          gap: "20px",
+          alignItems: "center",
+          flexShrink: 0,
+        }}
+      >
         {NAV_ITEMS.map((item) => {
           const isActive = pathname === item.href;
           return (
@@ -38,28 +47,19 @@ export default function MainNav() {
         })}
       </nav>
 
-      <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-        {/* Search link */}
+      {/* Right — search + dark mode */}
+      <div
+        style={{
+          display: "flex",
+          gap: "12px",
+          alignItems: "center",
+          flexShrink: 0,
+        }}
+      >
         <Link
           href="/search"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "6px",
-            fontFamily: "var(--font-ibm-plex-mono)",
-            fontSize: "10px",
-            letterSpacing: "0.1em",
-            color: pathname === "/search" ? "var(--accent)" : "var(--text-muted)",
-            transition: "color 0.2s",
-            padding: "4px 0",
-          }}
-          onMouseEnter={(e) =>
-            (e.currentTarget.style.color = "var(--text)")
-          }
-          onMouseLeave={(e) =>
-            (e.currentTarget.style.color =
-              pathname === "/search" ? "var(--accent)" : "var(--text-muted)")
-          }
+          className={`nav-search-link ${pathname === "/search" ? "active" : ""}`}
+          aria-label="Search"
         >
           <svg
             width="13"
@@ -74,7 +74,7 @@ export default function MainNav() {
             <circle cx="11" cy="11" r="8" />
             <path d="m21 21-4.35-4.35" />
           </svg>
-          Search
+          <span className="nav-search-label">Search</span>
         </Link>
 
         <DarkModeToggle />

@@ -477,6 +477,7 @@ a {
   /* Nav */
   .main-nav {
     padding: 10px 16px !important;
+    gap: 8px !important;
   }
 
   /* Piece page */
@@ -681,5 +682,40 @@ a {
 
   .quote-word-grid > *:last-child {
     border-left: none !important;
+  }
+}
+
+/* ─── Nav Search Link ─── */
+.nav-search-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-ibm-plex-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 0.2s;
+  padding: 4px 0;
+  white-space: nowrap;
+}
+
+.nav-search-link:hover {
+  color: var(--text);
+}
+
+.nav-search-link.active {
+  color: var(--accent);
+}
+
+/* Hide search label text on small screens — icon only */
+@media (max-width: 480px) {
+  .nav-search-label {
+    display: none;
+  }
+
+  .nav-link {
+    font-size: 8px;
+    letter-spacing: 0.1em;
   }
 }

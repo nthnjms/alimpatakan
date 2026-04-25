@@ -73,11 +73,11 @@ export default function QuoteCard() {
           style={{
             fontFamily: "var(--font-playfair)",
             fontStyle: "italic",
-            fontSize: "clamp(22px, 4vw, 48px)",
+            fontSize: "clamp(62px, 4vw, 48px)",
             lineHeight: 1.3,
             color: "var(--text)",
             maxWidth: "900px",
-            margin: "0 0 24px 0",
+            margin: "0 0 14px 0",
           }}
         >
           &ldquo;{quote.text}&rdquo;
@@ -102,7 +102,7 @@ export default function QuoteCard() {
             <p
               style={{
                 fontFamily: "var(--font-ibm-plex-mono)",
-                fontSize: "clamp(10px, 1.2vw, 12px)",
+                fontSize: "clamp(30px, 1.2vw, 12px)",
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 color: "var(--text)",
@@ -114,7 +114,7 @@ export default function QuoteCard() {
               <p
                 style={{
                   fontFamily: "var(--font-ibm-plex-mono)",
-                  fontSize: "clamp(9px, 1vw, 10px)",
+                  fontSize: "clamp(19px, 1vw, 10px)",
                   letterSpacing: "0.1em",
                   color: "var(--text-muted)",
                   marginTop: "2px",
