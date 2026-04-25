@@ -102,7 +102,7 @@ export default function QuoteCard() {
             <p
               style={{
                 fontFamily: "var(--font-ibm-plex-mono)",
-                fontSize: "clamp(25px, 1.2vw, 12px)",
+                fontSize: "clamp(20px, 1.2vw, 12px)",
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
                 color: "var(--text)",
