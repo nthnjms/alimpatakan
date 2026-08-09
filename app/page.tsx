@@ -19,34 +19,34 @@ import WordCard from "@/components/WordCard";
 export const metadata: Metadata = {
   title: "ALIMPATAKAN",
   description:
-    "A personal literary publication by Nathaniel James Toñacao. Hardcore, Stroke, Quickie, Fantasy, Uncensored, Raw — writing that doesn't apologize.",
+    "A personal literary publication by Nathaniel James Toñacao. Essay, Poetry, Quickie, Fantasy, Inner Thoughts, IRL — writing that doesn't apologize.",
 };
 
 const CATEGORY_THUMBS: Record<string, string> = {
-  Hardcore: "🖊️",
-  Stroke: "🌿",
+  Essay: "🖊️",
+  Poetry: "🌿",
   Quickie: "⚡",
   Fantasy: "🌑",
-  Uncensored: "🪞",
-  Raw: "🗂️",
+  Inner Thoughts: "🪞",
+  IRL: "🗂️",
 };
 
 const CATEGORY_THUMB_CLASS: Record<string, string> = {
-  Hardcore: "thumb-essay",
-  Stroke: "thumb-poetry",
+  Essay: "thumb-essay",
+  Poetry: "thumb-poetry",
   Quickie: "thumb-story",
   Fantasy: "thumb-fiction",
-  Uncensored: "thumb-reflection",
-  Raw: "thumb-nonfiction",
+  Inner Thoughts: "thumb-reflection",
+  IRL: "thumb-nonfiction",
 };
 
 const CATEGORY_COLORS: Record<string, string> = {
-  Hardcore: "#4A90D9",
-  Stroke: "#9B59B6",
+  Essay: "#4A90D9",
+  Poetry: "#9B59B6",
   Quickie: "#27AE60",
   Fantasy: "#1ABC9C",
-  Uncensored: "#E67E22",
-  Raw: "#E74C3C",
+  Inner Thoughts: "#E67E22",
+  IRL: "#E74C3C",
 };
 
 export default function HomePage() {
@@ -93,7 +93,7 @@ export default function HomePage() {
         </div>
         </div>
         <nav className="top-bar-nav" style={{ display: "flex", gap: "20px" }}>
-          {["Hardcore", "Stroke", "Quickie", "Fantasy", "Uncensored", "Raw"].map(
+          {["Essay", "Poetry", "Quickie", "Fantasy", "Inner Thoughts", "IRL"].map(
             (cat) => (
               <Link
                 key={cat}

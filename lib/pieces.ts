@@ -3,12 +3,12 @@ import piecesData from "@/data/pieces.json";
 // ─── Types ───────────────────────────────────────────────────────────────────
 
 export type Category =
-  | "Hardcore"
-  | "Stroke"
+  | "Essay"
+  | "Poetry"
   | "Quickie"
   | "Fantasy"
-  | "Uncensored"
-  | "Raw";
+  | "Inner Thoughts"
+  | "IRL";
 
 export type Piece = {
   slug: string;

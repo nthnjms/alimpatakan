@@ -5,12 +5,12 @@ import { useRouter } from "next/navigation";
 import type { Piece, Category } from "@/lib/pieces";
 
 const CATEGORIES: Category[] = [
-  "Hardcore",
-  "Stroke",
+  "Essay",
+  "Poetry",
   "Quickie",
   "Fantasy",
-  "Uncensored",
-  "Raw",
+  "Inner Thoughts",
+  "IRL",
 ];
 
 const ADMIN_PASSWORD = "dayandayan";
@@ -100,7 +100,7 @@ const newPiece: Piece = {
       setTimeout(() => setSaved(false), 3000);
       setForm({
         title: "",
-        category: "Hardcore",
+        category: "Essay",
         date: new Date().toISOString().split("T")[0],
         excerpt: "",
         content: "",

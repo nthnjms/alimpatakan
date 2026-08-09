@@ -11,16 +11,16 @@ import CategoryTooltip from "@/components/CategoryTooltip";
 
 export const metadata: Metadata = {
   title: "Archive",
-  description: "Everything published in ALIMPATAKAN. Hardcore, Stroke, Quickie, Fantasy, Uncensored, Raw. All of it meant it.",
+  description: "Everything published in ALIMPATAKAN. Essay, Poetry, Quickie, Fantasy, Inner Thoughts, IRL. All of it meant it.",
 };
 
 const CATEGORIES: Category[] = [
-  "Hardcore",
-  "Stroke",
+  "Essay",
+  "Poetry",
   "Quickie",
   "Fantasy",
-  "Uncensored",
-  "Raw",
+  "Inner Thoughts",
+  "IRL",
 ];
 
 export default function ArchivePage({
