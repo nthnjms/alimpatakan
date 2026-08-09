@@ -7,7 +7,7 @@ const CATEGORY_DESCRIPTIONS: Record<string, string> = {
   Poetry: "Every line a brushstroke, a caress, a slow burn. Lyrical pieces that live under your skin after you've read them.",
   Quickie: "Fast, sharp, and over before you're ready. Flash fiction that hits harder than its word count has any right to.",
   Fantasy: "Invented worlds, real desires. Imaginative long-form work that goes places reality won't let you.",
-  Inner Thoughts: "The thoughts you weren't supposed to say out loud. Personal, unfiltered, and uncomfortably honest.",
+  "Inner Thoughts": "The thoughts you weren't supposed to say out loud. Personal, unfiltered, and uncomfortably honest.",
   IRL: "True stories, witnessed lives, facts that need no embellishment. Reported and real — no filter, no performance.",
 };
 

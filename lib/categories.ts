@@ -24,7 +24,7 @@ export const CATEGORY_DESCRIPTIONS: Record<Category, string> = {
     "Fast, sharp, and over before you're ready. Flash fiction that hits harder than its word count has any right to.",
   Fantasy:
     "Invented worlds, real desires. Imaginative long-form work that goes places reality won't let you.",
-  Inner Thoughts:
+  "Inner Thoughts":
     "Personal reflections, internal monologues, and unfiltered musings. Stories that live in the space between your ears.",
   IRL:
     "Real-world experiences, genuine encounters, and authentic moments. Pieces that capture life as it happens.",
@@ -35,7 +35,7 @@ export const CATEGORY_COLORS: Record<Category, string> = {
   Poetry: "#9B59B6",
   Quickie: "#27AE60",
   Fantasy: "#1ABC9C",
-  Inner Thoughts: "#E67E22",
+  "Inner Thoughts": "#E67E22",
   IRL: "#E74C3C",
 };
 
@@ -44,7 +44,7 @@ export const CATEGORY_THUMBS: Record<Category, string> = {
   Poetry: "🌿",
   Quickie: "⚡",
   Fantasy: "🌑",
-  Inner Thoughts: "🪞",
+  "Inner Thoughts": "🪞",
   IRL: "🗂️",
 };
 
@@ -53,7 +53,7 @@ export const CATEGORY_THUMB_CLASS: Record<Category, string> = {
   Poetry: "thumb-poetry",
   Quickie: "thumb-story",
   Fantasy: "thumb-fiction",
-  Inner Thoughts: "thumb-reflection",
+  "Inner Thoughts": "thumb-reflection",
   IRL: "thumb-nonfiction",
 };
 

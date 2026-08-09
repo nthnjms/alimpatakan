@@ -27,7 +27,7 @@ const CATEGORY_THUMBS: Record<string, string> = {
   Poetry: "🌿",
   Quickie: "⚡",
   Fantasy: "🌑",
-  Inner Thoughts: "🪞",
+  "Inner Thoughts": "🪞",
   IRL: "🗂️",
 };
 
@@ -36,7 +36,7 @@ const CATEGORY_THUMB_CLASS: Record<string, string> = {
   Poetry: "thumb-poetry",
   Quickie: "thumb-story",
   Fantasy: "thumb-fiction",
-  Inner Thoughts: "thumb-reflection",
+  "Inner Thoughts": "thumb-reflection",
   IRL: "thumb-nonfiction",
 };
 
@@ -45,7 +45,7 @@ const CATEGORY_COLORS: Record<string, string> = {
   Poetry: "#9B59B6",
   Quickie: "#27AE60",
   Fantasy: "#1ABC9C",
-  Inner Thoughts: "#E67E22",
+  "Inner Thoughts": "#E67E22",
   IRL: "#E74C3C",
 };
 

@@ -21,7 +21,7 @@ const CATEGORY_DESCRIPTIONS: Record<Category, string> = {
   Poetry: "Every line a brushstroke, a caress, a slow burn. Lyrical pieces that live under your skin after you've read them.",
   Quickie: "Fast, sharp, and over before you're ready. Flash fiction that hits harder than its word count has any right to.",
   Fantasy: "Invented worlds, real desires. Imaginative long-form work that goes places reality won't let you.",
-  Inner Thoughts: "The thoughts you weren't supposed to say out loud. Personal, unfiltered, and uncomfortably honest.",
+  "Inner Thoughts": "The thoughts you weren't supposed to say out loud. Personal, unfiltered, and uncomfortably honest.",
   IRL: "True stories, witnessed lives, facts that need no embellishment. Reported and real — no filter, no performance.",
 };
 
@@ -30,7 +30,7 @@ const CATEGORY_SUBHEAD: Record<Category, string> = {
   Poetry: "Lyrical. Slow. Stays with you.",
   Quickie: "Short. Sharp. Over before you're ready.",
   Fantasy: "Invented worlds. Real desires.",
-  Inner Thoughts: "Unfiltered. Personal. Uncomfortable.",
+  "Inner Thoughts": "Unfiltered. Personal. Uncomfortable.",
   IRL: "True stories. No embellishment. No performance.",
 };
 
@@ -39,7 +39,7 @@ const CATEGORY_COLORS: Record<Category, string> = {
   Poetry: "#9B59B6",
   Quickie: "#27AE60",
   Fantasy: "#1ABC9C",
-  Inner Thoughts: "#E67E22",
+  "Inner Thoughts": "#E67E22",
   IRL: "#E74C3C",
 };
 
