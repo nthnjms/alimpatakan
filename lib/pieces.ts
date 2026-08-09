@@ -147,7 +147,7 @@ export function formatContent(
   content: string,
   category: Category
 ): string {
-  if (category === "Stroke") {
+  if (category === "Poetry") {
     return content
       .split("\n\n")
       .map((stanza) => {
