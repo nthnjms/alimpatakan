@@ -502,7 +502,7 @@ const newPiece: Piece = {
               value={form.content}
               onChange={(e) => setForm({ ...form, content: e.target.value })}
               placeholder={
-                form.category === "Stroke"
+                form.category === "Poetry"
                   ? "Write each line on its own line.\nLeave a blank line between stanzas.\nUse *word* for italics."
                   : "Write your piece here.\n\nLeave a blank line between paragraphs.\nUse *word* for italics."
               }
@@ -514,10 +514,10 @@ const newPiece: Piece = {
                 border: "0.5px solid var(--border-strong)",
                 color: "var(--text)",
                 fontFamily:
-                  form.category === "Stroke"
+                  form.category === "Poetry"
                     ? "var(--font-playfair)"
                     : "var(--font-inter)",
-                fontStyle: form.category === "Stroke" ? "italic" : "normal",
+                fontStyle: form.category === "Poetry" ? "italic" : "normal",
                 fontSize: "15px",
                 lineHeight: 1.8,
                 outline: "none",
